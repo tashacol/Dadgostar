@@ -4,6 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="امیرحسین دادگستر">
   <meta name="description" content="وب‌سایت شخصی امیرحسین دادگستر - مقالات، جزوات و منابع علمی">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tashacol.github.io/Dadgostar/">
   <title>امیرحسین دادگستر – مقالات و جزوات</title>  <!-- Google Analytics GA4 -->  <link rel="preconnect" href="https://www.googletagmanager.com">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQMG7L0GX0"></script>
   <script>
@@ -11,35 +13,83 @@
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-TQMG7L0GX0');
+  </script>  <!-- Structured Data: WebSite for Search Box in SERP -->  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://tashacol.github.io/Dadgostar/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tashacol.github.io/Dadgostar/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
   </script>  <!-- Styles -->  <style>
     * { box-sizing: border-box; margin:0; padding:0; }
     body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f2f5; color: #333; }
     a { text-decoration: none; color: inherit; }
     header { background: #1f2937; color: #fff; padding: 1rem; text-align: center; }
     header h1 { margin-bottom: .3rem; font-size: 1.8rem; }
-    header p { font-size: .9rem; opacity: .8; }
+    header p  { font-size: .9rem; opacity: .8; }
 
     .container { display: flex; min-height: 100vh; }
     nav { background: #fff; width: 250px; padding: 1rem; border-right: 1px solid #e5e7eb; }
     nav ul { list-style: none; }
-    nav li { margin-bottom: 1rem; cursor: pointer; }
+    nav li { margin-bottom: 1rem; cursor: pointer; color: #555; }
     nav li:hover { color: #1f2937; }
 
     main { flex:1; padding: 1rem; }
     .posts { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
-    .post-box { background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; }
-    .post-info { display:flex; flex-direction:column; }
+    .post-box {
+      background:#fff;
+      padding:1rem;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      display:flex;
+      flex-direction:column;
+      justify-content: space-between;
+    }
     .post-title { font-size:1.1rem; font-weight:bold; margin-bottom:.5rem; }
-    .post-desc { font-size:.9rem; color:#555; margin-bottom:.5rem; }
-    .post-meta { font-size:.8rem; color:#777; margin-bottom:.5rem; }
-    .post-button { background:#3b82f6; color:#fff; border:none; padding:.5rem 1rem; border-radius:4px; font-size:.9rem; align-self:flex-start; }
+    .post-date  { font-size:.8rem; color:#777; margin-bottom:.5rem; }
+    .post-desc  { font-size:.9rem; color:#555; margin-bottom:1rem; }
+    .post-button {
+      background:#3b82f6;
+      color:#fff;
+      border:none;
+      padding:.5rem 1rem;
+      border-radius:4px;
+      font-size:.9rem;
+      align-self:flex-start;
+    }
 
     /* Modal */
-    .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000; }
-    .modal { background:#fff; padding:1.5rem; border-radius:8px; max-width:400px; width:90%; box-shadow:0 2px 10px rgba(0,0,0,0.2); }
-    .modal h2 { margin-bottom:.8rem; }
-    .modal p { font-size:.95rem; line-height:1.5; }
-    .modal .close-btn { margin-top:1rem; background:#ef4444; color:#fff; border:none; padding:.5rem 1rem; border-radius:4px; cursor:pointer; }
+    .modal-overlay {
+      display:none;
+      position:fixed; top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.5);
+      align-items:center; justify-content:center;
+      z-index:1000;
+    }
+    .modal {
+      background:#fff;
+      padding:1.5rem;
+      border-radius:8px;
+      max-width:400px;
+      width:90%;
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    }
+    .modal h2 { margin-bottom:.8rem; font-weight:bold; }
+    .modal p  { font-size:.95rem; line-height:1.5; }
+    .close-btn {
+      margin-top:1rem;
+      background:#ef4444;
+      color:#fff;
+      border:none;
+      padding:.5rem 1rem;
+      border-radius:4px;
+      cursor:pointer;
+    }
 
     @media(max-width:768px){
       .container { flex-direction:column; }
@@ -66,36 +116,42 @@
   </div>  <!-- About Modal -->  <div id="modal" class="modal-overlay">
     <div class="modal">
       <h2>درباره من</h2>
-      <p>من امیرحسین دادگستر هستم؛ طلبه حوزه علمیه. در مباحث حقوقی، روانشناسی و طب سنتی تحقیقاتی انجام داده‌ام. اینجا مقالات و جزوات من را می‌توانید مطالعه کنید.</p>
+      <p>
+        من امیرحسین دادگستر هستم؛ طلبه حوزه علمیه. <br>
+        در مباحث حقوقی، روانشناسی و طب سنتی تحقیقاتی انجام داده‌ام. <br>
+        اینجا مقالات و جزوات من را می‌توانید مطالعه کنید.
+      </p>
       <button class="close-btn" onclick="toggleAbout(false)">بستن</button>
     </div>
   </div>  <script>
-    document.addEventListener('DOMContentLoaded',()=>{
-      const sheetId='1IFhbfSDZPE6gBWb1T9MA1_Nn0FM_4PvI9syklqR5vKM';
+    document.addEventListener('DOMContentLoaded', ()=> {
+      const sheetId = '1IFhbfSDZPE6gBWb1T9MA1_Nn0FM_4PvI9syklqR5vKM';
       fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`)
-        .then(r=>r.text()).then(txt=>{
-          const j=JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}')+1));
-          const container=document.getElementById('posts');
-          j.table.rows.forEach(row=>{
-            const title=row.c[0]?.v||'';
-            const desc=row.c[1]?.v||'';
-            const link=row.c[2]?.v||'#';
-            const date=row.c[3]?.v||'';
-            const box=document.createElement('div'); box.className='post-box';
-            box.innerHTML=`
-              <div class="post-info">
-                <div class="post-title">${title}</div>
-                <div class="post-meta">${date}</div>
-                <div class="post-desc">${desc}</div>
-                <button class="post-button" onclick="window.open('${link}','_blank')">مشاهده فایل</button>
-              </div>
+        .then(r => r.text())
+        .then(txt => {
+          const j = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}')+1));
+          const container = document.getElementById('posts');
+          j.table.rows.forEach(row => {
+            const title = row.c[0]?.v || '';
+            const desc  = row.c[1]?.v || '';
+            const link  = row.c[2]?.v || '#';
+            const date  = row.c[3]?.v || '';
+            const box   = document.createElement('div');
+            box.className = 'post-box';
+            box.innerHTML = `
+              <div class="post-title">${title}</div>
+              <div class="post-date">${date}</div>
+              <div class="post-desc">${desc}</div>
+              <button class="post-button" onclick="window.open('${link}','_blank')">مشاهده فایل</button>
             `;
             container.appendChild(box);
           });
-        }).catch(console.error);
+        })
+        .catch(console.error);
     });
-    function toggleAbout(open){
-      document.getElementById('modal').style.display=open?'flex':'none';
+
+    function toggleAbout(open) {
+      document.getElementById('modal').style.display = open ? 'flex' : 'none';
     }
   </script></body>
 </html>
