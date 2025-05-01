@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,14 +7,18 @@
   <meta name="description" content="وب‌سایت شخصی امیرحسین دادگستر - مقالات، جزوات و منابع علمی">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://tashacol.github.io/Dadgostar/">
-  <title>امیرحسین دادگستر – مقالات و جزوات</title>  <!-- Google Analytics GA4 -->  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <title>امیرحسین دادگستر – مقالات و جزوات</title>
+  <!-- Google Analytics GA4 -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQMG7L0GX0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-TQMG7L0GX0');
-  </script>  <!-- Structured Data: WebSite for Search Box in SERP -->  <script type="application/ld+json">
+  </script>
+  <!-- Structured Data: WebSite for Search Box in SERP -->
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -24,7 +29,9 @@
       "query-input": "required name=search_term_string"
     }
   }
-  </script>  <!-- Styles -->  <style>
+  </script>
+  <!-- Styles -->
+  <style>
     * { box-sizing: border-box; margin:0; padding:0; }
     body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f2f5; color: #333; }
     a { text-decoration: none; color: inherit; }
@@ -59,7 +66,7 @@
       padding:.5rem 1rem;
       border-radius:4px;
       font-size:.9rem;
-      margin-left:auto; /* قرارگیری در سمت چپ */
+      margin-right:auto; /* اکنون در سمت چپ قرار می‌گیرد */
     }
 
     /* Modal */
@@ -96,12 +103,14 @@
       nav { width:100%; display:flex; overflow-x:auto; }
       nav li { margin-right:1rem; }
     }
-  </style></head>
+  </style>
+</head>
 <body>
   <header>
     <h1>امیرحسین دادگستر</h1>
     <p>Amirhossein Dadgestar</p>
-  </header>  <div class="container">
+  </header>
+  <div class="container">
     <nav>
       <ul>
         <li onclick="location.href='https://tashacol.github.io/Dadgostar/'">این سایت</li>
@@ -109,11 +118,14 @@
         <li onclick="location.href='https://archive.org/details/@amirhosseindadgestar'">آرشیو دائمی</li>
         <li onclick="toggleAbout(true)">درباره من</li>
       </ul>
-    </nav><main>
-  <div id="posts" class="posts"></div>
-</main>
+    </nav>
+    <main>
+      <div id="posts" class="posts"></div>
+    </main>
+  </div>
 
-  </div>  <!-- About Modal -->  <div id="modal" class="modal-overlay">
+  <!-- About Modal -->
+  <div id="modal" class="modal-overlay">
     <div class="modal">
       <h2>درباره من</h2>
       <p>
@@ -123,7 +135,9 @@
       </p>
       <button class="close-btn" onclick="toggleAbout(false)">بستن</button>
     </div>
-  </div>  <script>
+  </div>
+
+  <script>
     document.addEventListener('DOMContentLoaded', ()=> {
       const sheetId = '1IFhbfSDZPE6gBWb1T9MA1_Nn0FM_4PvI9syklqR5vKM';
       fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`)
@@ -132,11 +146,12 @@
           const j = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}')+1));
           const container = document.getElementById('posts');
           j.table.rows.forEach(row => {
-            const title = row.c[0]?.v || '';
-            const desc  = row.c[1]?.v || '';
-            const link  = row.c[2]?.v || '#';
-            const date  = row.c[3]?.v || '';
-            const box   = document.createElement('div');
+            const title   = row.c[0]?.v || '';
+            const desc    = row.c[1]?.v || '';
+            const link    = row.c[2]?.v || '#';
+            const rawDate = row.c[3]?.v || '';
+            const date    = rawDate.replace(/^date\s*/i, ''); // حذف کلمه "date" قبل از نمایش
+            const box     = document.createElement('div');
             box.className = 'post-box';
             box.innerHTML = `
               <div class="post-title">${title}</div>
@@ -153,5 +168,6 @@
     function toggleAbout(open) {
       document.getElementById('modal').style.display = open ? 'flex' : 'none';
     }
-  </script></body>
+  </script>
+</body>
 </html>
