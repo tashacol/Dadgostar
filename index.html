@@ -46,6 +46,14 @@
     nav li:hover { color: #1f2937; }
 
     main { flex:1; padding: 1rem; }
+    #search { 
+      width: 100%; 
+      padding: .5rem; 
+      margin-bottom: 1rem; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+      font-size: .9rem;
+    }
     .posts { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
     .post-box {
       background:#fff;
@@ -120,6 +128,7 @@
       </ul>
     </nav>
     <main>
+      <input type="text" id="search" placeholder="جستجو در عناوین...">
       <div id="posts" class="posts"></div>
     </main>
   </div>
@@ -140,29 +149,47 @@
   <script>
     document.addEventListener('DOMContentLoaded', ()=> {
       const sheetId = '1IFhbfSDZPE6gBWb1T9MA1_Nn0FM_4PvI9syklqR5vKM';
+      const container = document.getElementById('posts');
+      const searchInput = document.getElementById('search');
+      let allPosts = [];
+
+      function renderPosts(list) {
+        container.innerHTML = '';
+        list.forEach(p => {
+          const box = document.createElement('div');
+          box.className = 'post-box';
+          box.innerHTML = `
+            <div class="post-title">${p.title}</div>
+            <div class="post-date">${p.date}</div>
+            <div class="post-desc">${p.desc}</div>
+            <button class="post-button" onclick="window.open('${p.link}','_blank')">مشاهده فایل</button>
+          `;
+          container.appendChild(box);
+        });
+      }
+
       fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`)
         .then(r => r.text())
         .then(txt => {
           const j = JSON.parse(txt.slice(txt.indexOf('{'), txt.lastIndexOf('}')+1));
-          const container = document.getElementById('posts');
-          j.table.rows.forEach(row => {
-            const title   = row.c[0]?.v || '';
-            const desc    = row.c[1]?.v || '';
-            const link    = row.c[2]?.v || '#';
+          allPosts = j.table.rows.map(row => {
             const rawDate = row.c[3]?.v || '';
-            const date    = rawDate.replace(/^date\s*/i, ''); // حذف کلمه "date" قبل از نمایش
-            const box     = document.createElement('div');
-            box.className = 'post-box';
-            box.innerHTML = `
-              <div class="post-title">${title}</div>
-              <div class="post-date">${date}</div>
-              <div class="post-desc">${desc}</div>
-              <button class="post-button" onclick="window.open('${link}','_blank')">مشاهده فایل</button>
-            `;
-            container.appendChild(box);
+            return {
+              title: row.c[0]?.v || '',
+              desc: row.c[1]?.v || '',
+              link: row.c[2]?.v || '#',
+              date: rawDate.replace(/^date\s*/i, '')
+            };
           });
+          renderPosts(allPosts);
         })
         .catch(console.error);
+
+      searchInput.addEventListener('input', () => {
+        const term = searchInput.value.trim().toLowerCase();
+        const filtered = allPosts.filter(p => p.title.toLowerCase().includes(term));
+        renderPosts(filtered);
+      });
     });
 
     function toggleAbout(open) {
