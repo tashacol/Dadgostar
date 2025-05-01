@@ -24,27 +24,23 @@
     nav ul { list-style: none; }
     nav li { margin-bottom: 1rem; cursor: pointer; }
     nav li:hover { color: #1f2937; }
-    nav .active { font-weight: bold; }
 
     main { flex:1; padding: 1rem; }
     .posts { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
-    .post-box { background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; flex-direction:row-reverse; align-items:center; justify-content:space-between; }
-    .post-info { flex:1; margin-left:1rem; }
-    .post-title { font-size:1.1rem; margin-bottom:.5rem; }
-    .post-desc { font-size:.9rem; color:#555; }
-    .post-button { background:#3b82f6; color:#fff; border:none; padding:.5rem 1rem; border-radius:4px; font-size:.9rem; }
+    .post-box { background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; }
+    .post-info { display:flex; flex-direction:column; }
+    .post-title { font-size:1.1rem; font-weight:bold; margin-bottom:.5rem; }
+    .post-desc { font-size:.9rem; color:#555; margin-bottom:.5rem; }
+    .post-meta { font-size:.8rem; color:#777; margin-bottom:.5rem; }
+    .post-button { background:#3b82f6; color:#fff; border:none; padding:.5rem 1rem; border-radius:4px; font-size:.9rem; align-self:flex-start; }
 
-    /* About Modal */
+    /* Modal */
     .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000; }
     .modal { background:#fff; padding:1.5rem; border-radius:8px; max-width:400px; width:90%; box-shadow:0 2px 10px rgba(0,0,0,0.2); }
     .modal h2 { margin-bottom:.8rem; }
     .modal p { font-size:.95rem; line-height:1.5; }
     .modal .close-btn { margin-top:1rem; background:#ef4444; color:#fff; border:none; padding:.5rem 1rem; border-radius:4px; cursor:pointer; }
 
-    /* Desktop About Content */
-    .about-desktop { display:none; margin-top:2rem; background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-
-    /* Responsive */
     @media(max-width:768px){
       .container { flex-direction:column; }
       nav { width:100%; display:flex; overflow-x:auto; }
@@ -58,24 +54,22 @@
   </header>  <div class="container">
     <nav>
       <ul>
-        <li id="nav-home" class="active">خانه</li>
-        <li id="nav-about">درباره من</li>
+        <li onclick="location.href='https://tashacol.github.io/Dadgostar/'">این سایت</li>
+        <li onclick="location.href='YOUR_GOOGLE_BLOG_URL'">وبلاگ من</li>
+        <li onclick="location.href='https://archive.org/details/@amirhosseindadgestar'">آرشیو دائمی</li>
+        <li onclick="toggleAbout(true)">درباره من</li>
       </ul>
-      <div id="about-desktop" class="about-desktop">
-        <h2>درباره من</h2>
-        <p>من امیرحسین دادگستر هستم؛ طلبه با علاقه‌مندی به روانشناسی و سلامت پوست و مو. اینجا مقالات و جزوات من را می‌توانید مطالعه کنید.</p>
-      </div>
     </nav><main>
   <div id="posts" class="posts"></div>
 </main>
 
-  </div>  <!-- About Modal (Mobile) -->  <div id="modal" class="modal-overlay">
+  </div>  <!-- About Modal -->  <div id="modal" class="modal-overlay">
     <div class="modal">
       <h2>درباره من</h2>
-      <p>من امیرحسین دادگستر هستم؛ طلبه با علاقه‌مندی به روانشناسی و سلامت پوست و مو. اینجا مقالات و جزوات من را می‌توانید مطالعه کنید.</p>
+      <p>من امیرحسین دادگستر هستم؛ طلبه حوزه علمیه. در مباحث حقوقی، روانشناسی و طب سنتی تحقیقاتی انجام داده‌ام. اینجا مقالات و جزوات من را می‌توانید مطالعه کنید.</p>
       <button class="close-btn" onclick="toggleAbout(false)">بستن</button>
     </div>
-  </div>  <!-- JS: Fetch posts & About toggle -->  <script>
+  </div>  <script>
     document.addEventListener('DOMContentLoaded',()=>{
       const sheetId='1IFhbfSDZPE6gBWb1T9MA1_Nn0FM_4PvI9syklqR5vKM';
       fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`)
@@ -86,26 +80,22 @@
             const title=row.c[0]?.v||'';
             const desc=row.c[1]?.v||'';
             const link=row.c[2]?.v||'#';
+            const date=row.c[3]?.v||'';
             const box=document.createElement('div'); box.className='post-box';
             box.innerHTML=`
-              <button class="post-button" onclick="window.open('${link}','_blank')">مشاهده فایل</button>
               <div class="post-info">
                 <div class="post-title">${title}</div>
+                <div class="post-meta">${date}</div>
                 <div class="post-desc">${desc}</div>
+                <button class="post-button" onclick="window.open('${link}','_blank')">مشاهده فایل</button>
               </div>
             `;
             container.appendChild(box);
           });
         }).catch(console.error);
-
-      // About handlers
-      document.getElementById('nav-about').onclick=()=>{
-        if(window.innerWidth<=768) toggleAbout(true);
-      };
     });
     function toggleAbout(open){
-      const modal=document.getElementById('modal');
-      modal.style.display=open?'flex':'none';
+      document.getElementById('modal').style.display=open?'flex':'none';
     }
   </script></body>
 </html>
