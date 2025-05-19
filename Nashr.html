@@ -72,7 +72,7 @@
       src: url('https://tashacol.github.io/ir/B-NAZANIN.TTF') format('truetype');
       font-weight: normal;
       font-style: normal;
-      font-display: swap; /* مهم برای بهبود تجربه بارگذاری فونت */
+      font-display: swap;
     }
 
     :root {
@@ -84,379 +84,144 @@
       --bg-color: #f8f9fa;
       --card-bg-color: #ffffff;
       --border-color: #dee2e6;
-      --font-family: 'BNazanin', Tahoma, sans-serif; /* فونت B Nazanin به عنوان اولویت اول */
+      --font-family: 'BNazanin', Tahoma, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Loading Screen Styles */
     #loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--bg-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: var(--bg-color); display: flex;
+      justify-content: center; align-items: center; z-index: 9999; flex-direction: column;
     }
     .loader {
-      border: 8px solid #f3f3f3; /* Light grey */
-      border-top: 8px solid var(--secondary-color); /* Blue */
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1.5s linear infinite;
+      border: 8px solid #f3f3f3; border-top: 8px solid var(--secondary-color);
+      border-radius: 50%; width: 60px; height: 60px; animation: spin 1.5s linear infinite;
     }
-    #loading-overlay p {
-        margin-top: 20px;
-        font-size: 1.2rem;
-        color: var(--text-color);
-        font-family: var(--font-family); /* فونت برای متن لودینگ */
-    }
+    #loading-overlay p { margin-top: 20px; font-size: 1.2rem; color: var(--text-color); font-family: var(--font-family); }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Hide main content initially if needed, or let JS handle visibility */
-    .hidden-until-ready {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    }
-    .visible-after-ready {
-        visibility: visible;
-        opacity: 1;
-    }
-
+    .hidden-until-ready { visibility: hidden; opacity: 0; transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; }
+    .visible-after-ready { visibility: visible; opacity: 1; }
 
     body {
-      font-family: var(--font-family);
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.7; /* کمی افزایش برای خوانایی بهتر با فونت نازنین */
-      font-size: 17px;  /* کمی افزایش برای خوانایی بهتر با فونت نازنین */
+      font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-color);
+      line-height: 1.7; font-size: 17px;
     }
-
-    a {
-      text-decoration: none;
-      color: var(--secondary-color);
-    }
-    a:hover {
-      color: var(--primary-color);
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    a { text-decoration: none; color: var(--secondary-color); }
+    a:hover { color: var(--primary-color); text-decoration: underline; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     .site-header {
-      background-color: var(--primary-color);
-      color: var(--light-text-color);
-      padding: 20px 0;
-      text-align: center;
-      border-bottom: 5px solid var(--accent-color);
+      background-color: var(--primary-color); color: var(--light-text-color); padding: 20px 0;
+      text-align: center; border-bottom: 5px solid var(--accent-color);
     }
-    .site-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 5px;
-      font-weight: bold; /* فونت نازنین اغلب به صورت bold بهتر دیده می‌شود */
-    }
-    .site-header .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
+    .site-header h1 { font-size: 2.5rem; margin-bottom: 5px; font-weight: bold; }
+    .site-header .subtitle { font-size: 1.1rem; opacity: 0.9; }
 
-    .main-nav {
-      background-color: var(--secondary-color);
-      padding: 10px 0;
-    }
-    .main-nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap; /* برای واکنشگرایی بهتر منو */
-    }
-    .main-nav li {
-      margin: 5px 15px; /* کمی مارجین عمودی برای حالت wrap */
-    }
+    .main-nav { background-color: var(--secondary-color); padding: 10px 0; }
+    .main-nav ul { list-style: none; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .main-nav li { margin: 5px 15px; }
     .main-nav a {
-      color: var(--light-text-color);
-      font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+      color: var(--light-text-color); font-weight: bold; padding: 8px 12px;
+      border-radius: 4px; transition: background-color 0.3s ease;
     }
-    .main-nav a:hover, .main-nav a.active {
-      background-color: var(--primary-color);
-      text-decoration: none;
-    }
+    .main-nav a:hover, .main-nav a.active { background-color: var(--primary-color); text-decoration: none; }
 
-    .main-content {
-      padding: 30px 0;
-    }
-
+    .main-content { padding: 30px 0; }
     #search-bar {
-      width: 100%;
-      padding: 12px 15px;
-      margin-bottom: 30px;
-      border: 1px solid var(--border-color);
-      border-radius: 5px;
-      font-size: 1rem;
-      font-family: var(--font-family);
+      width: 100%; padding: 12px 15px; margin-bottom: 30px; border: 1px solid var(--border-color);
+      border-radius: 5px; font-size: 1rem; font-family: var(--font-family);
     }
-    #search-bar:focus {
-        outline: none;
-        border-color: var(--secondary-color);
-        box-shadow: 0 0 0 0.2rem rgba(0, 85, 164, 0.25);
-    }
+    #search-bar:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 0.2rem rgba(0, 85, 164, 0.25); }
 
-    .articles-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 25px;
-    }
-
+    .articles-grid { display: grid; grid-template-columns: 1fr; gap: 25px; }
     .article-card {
-      background-color: var(--card-bg-color);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: box-shadow 0.3s ease;
+      background-color: var(--card-bg-color); border: 1px solid var(--border-color); border-radius: 8px;
+      padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: box-shadow 0.3s ease;
     }
-    .article-card:hover {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .article-title {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
-    .article-meta {
-      font-size: 0.9rem;
-      color: #6c757d;
-      margin-bottom: 15px;
-    }
+    .article-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .article-title { font-size: 1.6rem; font-weight: bold; color: var(--primary-color); margin-bottom: 10px; }
+    .article-meta { font-size: 0.9rem; color: #6c757d; margin-bottom: 15px; }
     .article-meta span { margin-left: 15px; display: inline-block; margin-bottom: 5px;}
     .article-meta strong { color: var(--text-color); font-weight: bold; }
-
     .article-abstract {
-      font-size: 1rem;
-      color: #495057;
-      margin-bottom: 15px;
-      line-height: 1.8;
-      max-height: 110px; /* کمی بیشتر برای فونت نازنین */
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 1rem; color: #495057; margin-bottom: 15px; line-height: 1.8;
+      max-height: 110px; overflow: hidden; text-overflow: ellipsis;
     }
-     .article-abstract.expanded {
-      max-height: none;
-    }
-
+    .article-abstract.expanded { max-height: none; }
     .read-more-abstract, .show-less-abstract {
-        color: var(--secondary-color);
-        cursor: pointer;
-        font-size: 0.9rem;
-        display: inline-block;
-        margin-bottom:15px;
-        font-weight: bold;
+      color: var(--secondary-color); cursor: pointer; font-size: 0.9rem;
+      display: inline-block; margin-bottom:15px; font-weight: bold;
     }
-    .read-more-abstract:hover, .show-less-abstract:hover {
-        text-decoration: underline;
-    }
-
-    .article-keywords {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-    }
+    .read-more-abstract:hover, .show-less-abstract:hover { text-decoration: underline; }
+    .article-keywords { font-size: 0.9rem; margin-bottom: 20px; }
     .article-keywords strong { color: var(--text-color); font-weight: bold;}
     .article-keywords span {
-        background-color: #e9ecef;
-        color: #495057;
-        padding: 3px 8px;
-        border-radius: 4px;
-        margin-left: 5px;
-        font-size: 0.85rem;
-        display: inline-block; /* برای جلوگیری از شکستن در خطوط */
-        margin-bottom: 5px; /* فاصله بین کلیدواژه‌ها اگر در چند خط باشند */
+      background-color: #e9ecef; color: #495057; padding: 3px 8px; border-radius: 4px;
+      margin-left: 5px; font-size: 0.85rem; display: inline-block; margin-bottom: 5px;
     }
-
     .download-button {
-      display: inline-block;
-      background-color: var(--secondary-color);
-      color: var(--light-text-color);
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: bold;
-      text-align: center;
-      transition: background-color 0.3s ease;
-      font-size: 0.95rem;
+      display: inline-block; background-color: var(--secondary-color); color: var(--light-text-color);
+      padding: 10px 20px; border-radius: 5px; font-weight: bold; text-align: center;
+      transition: background-color 0.3s ease; font-size: 0.95rem;
     }
-    .download-button:hover {
-      background-color: var(--primary-color);
-      color: var(--light-text-color);
-      text-decoration: none;
-    }
-    .download-button.small { /* برای جدول دوره‌ها */
-        padding: 6px 12px;
-        font-size: 0.85rem;
-    }
+    .download-button:hover { background-color: var(--primary-color); color: var(--light-text-color); text-decoration: none; }
+    .download-button.small { padding: 6px 12px; font-size: 0.85rem; }
 
     .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 20px;
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 1000; padding: 20px;
     }
     .modal-content {
-      background: var(--card-bg-color);
-      padding: 30px;
-      border-radius: 8px;
-      max-width: 700px;
-      width: 100%;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      max-height: 90vh;
-      overflow-y: auto;
-      font-family: var(--font-family); /* اطمینان از فونت مودال */
+      background: var(--card-bg-color); padding: 30px; border-radius: 8px; max-width: 700px; width: 100%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; font-family: var(--font-family);
     }
-    .modal-content h2 {
-      color: var(--primary-color);
-      margin-bottom: 20px;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-    .modal-content p {
-      margin-bottom: 12px;
-      line-height: 1.8;
-    }
-    .modal-content strong {
-      color: var(--text-color);
-      font-weight: bold;
-    }
-    .modal-content ul {
-      list-style: disc;
-      margin-right: 20px;
-      margin-bottom: 15px;
-    }
-    .modal-content .info-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .modal-content .info-item {
-        background-color: #f8f9fa;
-        padding: 10px;
-        border-radius: 4px;
-        border-right: 3px solid var(--secondary-color);
-    }
+    .modal-content h2 { color: var(--primary-color); margin-bottom: 20px; text-align: center; font-size: 1.8rem; font-weight: bold; }
+    .modal-content p { margin-bottom: 12px; line-height: 1.8; }
+    .modal-content strong { color: var(--text-color); font-weight: bold; }
+    .modal-content ul { list-style: disc; margin-right: 20px; margin-bottom: 15px; }
+    .modal-content .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px; }
+    .modal-content .info-item { background-color: #f8f9fa; padding: 10px; border-radius: 4px; border-right: 3px solid var(--secondary-color); }
 
-    /* Styles for Issues Table in Modal */
-    #issues-table-container table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    #issues-table-container th,
-    #issues-table-container td {
-        border: 1px solid var(--border-color);
-        padding: 10px;
-        text-align: right;
-    }
-    #issues-table-container th {
-        background-color: #e9ecef;
-        font-weight: bold;
-        color: var(--primary-color);
-    }
-    #issues-table-container td a.download-button {
-        margin: 0 auto; /* برای وسط چین کردن دکمه اگر display:block شود */
-    }
-
+    #issues-table-container table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    #issues-table-container th, #issues-table-container td { border: 1px solid var(--border-color); padding: 10px; text-align: right; }
+    #issues-table-container th { background-color: #e9ecef; font-weight: bold; color: var(--primary-color); }
+    #issues-table-container td a.download-button { margin: 0 auto; }
 
     .close-modal-btn {
-      display: block;
-      margin: 20px auto 0;
-      background: #dc3545;
-      color: var(--light-text-color);
-      border: none;
-      padding: 10px 25px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
+      display: block; margin: 20px auto 0; background: #dc3545; color: var(--light-text-color);
+      border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold;
     }
-    .close-modal-btn:hover {
-      background: #c82333;
-    }
+    .close-modal-btn:hover { background: #c82333; }
 
     .site-footer {
-      background-color: #343a40;
-      color: #adb5bd;
-      text-align: center;
-      padding: 25px 0;
-      margin-top: 40px;
-      font-size: 0.9rem;
+      background-color: #343a40; color: #adb5bd; text-align: center; padding: 25px 0; margin-top: 40px; font-size: 0.9rem;
     }
     .site-footer p { margin-bottom: 5px; }
     .site-footer a { color: #ced4da; }
     .site-footer a:hover { color: var(--light-text-color); }
 
     @media (max-width: 768px) {
-      .site-header h1 { font-size: 2rem; }
-      .site-header .subtitle { font-size: 1rem; }
-      /* .main-nav ul { flex-direction: column; } */ /* Wrap بهتر است */
-      /* .main-nav li { margin: 8px 0; } */
-
-      .modal-content { padding: 20px; }
-      .modal-content h2 { font-size: 1.5rem; }
-      #issues-table-container th,
-      #issues-table-container td {
-          padding: 8px;
-          font-size: 0.9rem;
-      }
-      #issues-table-container td a.download-button {
-          font-size: 0.8rem;
-          padding: 5px 10px;
-      }
+      .site-header h1 { font-size: 2rem; } .site-header .subtitle { font-size: 1rem; }
+      .modal-content { padding: 20px; } .modal-content h2 { font-size: 1.5rem; }
+      #issues-table-container th, #issues-table-container td { padding: 8px; font-size: 0.9rem; }
+      #issues-table-container td a.download-button { font-size: 0.8rem; padding: 5px 10px; }
     }
     @media (max-width: 480px) {
-        .article-title { font-size: 1.3rem; }
-        .article-meta, .article-abstract, .article-keywords { font-size: 0.85rem; }
+      .article-title { font-size: 1.3rem; }
+      .article-meta, .article-abstract, .article-keywords { font-size: 0.85rem; }
     }
   </style>
 </head>
-<body class="hidden-until-ready"> <!-- کلاس برای مدیریت نمایش با JS -->
+<body class="hidden-until-ready">
 
   <div id="loading-overlay">
     <div class="loader"></div>
     <p>در حال بارگذاری، لطفا شکیبا باشید...</p>
   </div>
 
-  <div id="page-wrapper"> <!-- یک والد برای محتوای اصلی صفحه -->
+  <div id="page-wrapper">
     <header class="site-header">
       <div class="container">
         <h1>سالنامه علمی تبیان</h1>
@@ -490,10 +255,8 @@
         <p>آدرس سایت: <a href="https://SciTebyan.ir" target="_blank">SciTebyan.ir</a></p>
       </div>
     </footer>
-  </div> <!-- End of page-wrapper -->
+  </div>
 
-
-  <!-- Modal for Journal Information -->
   <div id="journal-info-modal" class="modal-overlay">
     <div class="modal-content">
       <h2 id="modal-title-info">درباره سالنامه علمی تبیان</h2>
@@ -522,37 +285,33 @@
         <p>استان کرمان، شهرستان جیرفت، بلوار امام خمینی، ابتدای خیابان انقلاب، حوزه علمیه امام صادق علیه السلام.</p>
         <p><strong>آدرس وب‌سایت:</strong> <a href="https://SciTebyan.ir" target="_blank">SciTebyan.ir</a></p>
         <p><strong>پست الکترونیکی:</strong> <a href="mailto:SciTebyan@gmail.com">SciTebyan@gmail.com</a></p>
-        <p><strong>تلفن تماس:</strong> ۰۳۴۴۳۳۱۶۰۲۵ </p>
+        <p><strong>تلفن تماس:</strong> ۰۳۴۴۳۳۱۶۰۲۵</p>
       </div>
       <button class="close-modal-btn" onclick="toggleJournalInfo(false)">بستن</button>
     </div>
   </div>
 
-  <!-- Modal for Journal Issues -->
   <div id="journal-issues-modal" class="modal-overlay">
     <div class="modal-content">
       <h2>دوره‌های منتشر شده سالنامه</h2>
       <div id="issues-table-container">
-        <!-- جدول دوره‌ها اینجا بارگذاری می‌شود -->
         <p style="text-align:center;">در حال بارگذاری اطلاعات دوره‌ها...</p>
       </div>
       <button class="close-modal-btn" onclick="toggleIssuesModal(false)">بستن</button>
     </div>
   </div>
 
-
   <script>
     // --- Google Sheet IDs ---
-    // شناسه گوگل شیت برای لیست مقالات
-    const articlesSheetId = '1Kf49GtmSZbX2Or8dgzqarq5MVxSnv17jRPNPxeLL_wk'; // شناسه شیت شما برای مقالات
-    // شناسه گوگل شیت برای لیست دوره های کامل نشریه
-    const issuesSheetId = '15nuHXnC40udicxyaiiZcsagZVVrss8LXPhK3FOwfI_c'; // <<-- مهم: این را با ID شیت دوره‌ها جایگزین کنید
+    const articlesSheetId = '1Kf49GtmSZbX2Or8dgzqarq5MVxSnv17jRPNPxeLL_wk';
+    const issuesSheetId = '15nuHXnC40udicxyaiiZcsagZVVrss8LXPhK3FOwfI_c';
 
-    // --- DOM Elements ---
+    // --- DOM Elements (Defined globally at the start of the script) ---
     const articlesContainer = document.getElementById('articles-container');
     const searchInput = document.getElementById('search-bar');
-    const loadingOverlay = document.getElementById('loading-overlay');
-    const pageWrapper = document.getElementById('page-wrapper'); // Wrapper for main content
+    // Note: loadingOverlay and pageWrapper are handled carefully within functions due to timing
+    // It's generally safer to get them right before use or pass them if they might not exist at global script parse time.
+    // However, for this simple page, they should be available when the script runs.
 
     const journalInfoModal = document.getElementById('journal-info-modal');
     const modalTitleInfo = document.getElementById('modal-title-info');
@@ -562,50 +321,66 @@
     const journalIssuesModal = document.getElementById('journal-issues-modal');
     const issuesTableContainer = document.getElementById('issues-table-container');
 
+    // --- Global Variables ---
     let allArticles = [];
-    let allIssues = []; // برای ذخیره اطلاعات دوره‌ها
+    let allIssues = [];
 
     // --- Font Loading and Initial Page Setup ---
     function showPageContent() {
-        if (pageWrapper) pageWrapper.classList.add('visible-after-ready');
-        if (pageWrapper) pageWrapper.classList.remove('hidden-until-ready'); // اگر از این کلاس استفاده می کنید
-        if (loadingOverlay) loadingOverlay.style.display = 'none';
+        const currentLoadingOverlay = document.getElementById('loading-overlay');
+        const currentPageWrapper = document.getElementById('page-wrapper');
+
+        if (currentPageWrapper) {
+            currentPageWrapper.classList.add('visible-after-ready');
+            currentPageWrapper.classList.remove('hidden-until-ready');
+        } else {
+            console.error("page-wrapper not found when trying to show content.");
+        }
+        if (currentLoadingOverlay) {
+            currentLoadingOverlay.style.display = 'none';
+        } else {
+            console.error("loading-overlay not found when trying to hide it.");
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // اضافه کردن کلاس hidden-until-ready به page-wrapper برای مدیریت اولیه نمایش
-        if (pageWrapper) pageWrapper.classList.add('hidden-until-ready');
+        const localPageWrapper = document.getElementById('page-wrapper');
+        if (localPageWrapper) {
+            localPageWrapper.classList.add('hidden-until-ready');
+        } else {
+            console.error("page-wrapper element not found at DOMContentLoaded!");
+        }
 
-        // بررسی آمادگی فونت ها
-        if (document.fonts && typeof document.fonts.ready === 'object') { // اطمینان از پشتیبانی مرورگر
+        if (document.fonts && typeof document.fonts.ready === 'object' && document.fonts.ready.then) {
             document.fonts.ready.then(() => {
-                console.log('Fonts are loaded.');
-                fetchArticles(); // بارگذاری مقالات پس از آماده شدن فونت‌ها
-                // fetchIssues(); // می توانید بارگذاری دوره‌ها را هم اینجا آغاز کنید یا هنگام باز کردن مودال
+                console.log('Fonts are loaded or loading via swap.');
+                fetchArticles();
             }).catch(err => {
-                console.warn('Font loading error or timeout:', err);
-                fetchArticles(); // در صورت خطا هم مقالات را بارگذاری کن
+                console.warn('Font loading API .ready.then error or timeout:', err);
+                fetchArticles(); // Proceed even if font loading has issues
             });
         } else {
-            // برای مرورگرهایی که document.fonts.ready را پشتیبانی نمی کنند
-            console.warn('CSS Font Loading API not supported. Relying on window.onload or timeout.');
-            // یک تاخیر کوچک برای اطمینان از بارگذاری اولیه فونت
-            // یا می توانید به window.onload تکیه کنید، اما تضمین بارگذاری فونت را نمی دهد
-            fetchArticles();
+            console.warn('CSS Font Loading API (document.fonts.ready.then) not fully supported. Relying on fallback.');
+            // Fallback: Attempt to fetch articles after a short delay,
+            // assuming fonts might load via CSS swap or basic mechanisms.
+            setTimeout(fetchArticles, 150); // Small delay
         }
     });
 
-
     // --- Article Fetching and Rendering ---
     function renderArticles(list) {
-      articlesContainer.innerHTML = '';
-      if (list.length === 0 && allArticles.length > 0) { // بررسی اینکه آیا جستجو نتیجه نداشته یا کلا مقاله ای نیست
-        articlesContainer.innerHTML = '<p style="text-align:center;">مقاله‌ای با این مشخصات یافت نشد.</p>';
-        return;
+      if (!articlesContainer) {
+          console.error("articlesContainer is not defined for renderArticles");
+          return;
       }
-      if (list.length === 0 && allArticles.length === 0) {
-         articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد.</p>';
-         return;
+      articlesContainer.innerHTML = '';
+      if (list.length === 0) {
+        if (allArticles.length > 0) { // Search returned no results
+            articlesContainer.innerHTML = '<p style="text-align:center;">مقاله‌ای با این مشخصات یافت نشد.</p>';
+        } else { // No articles loaded at all
+            articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد یا شیت مقالات خالی است.</p>';
+        }
+        return;
       }
 
       list.forEach(article => {
@@ -645,33 +420,46 @@
     }
 
     function fetchArticles() {
+      if (!articlesSheetId) {
+          console.error("articlesSheetId is not defined.");
+          if(articlesContainer) articlesContainer.innerHTML = '<p style="text-align:center;">خطای پیکربندی: شناسه شیت مقالات یافت نشد.</p>';
+          showPageContent(); // Show page even on config error to avoid blank screen
+          return;
+      }
       fetch(`https://docs.google.com/spreadsheets/d/${articlesSheetId}/gviz/tq?tqx=out:json`)
         .then(response => response.text())
         .then(text => {
           const jsonData = JSON.parse(text.substring(text.indexOf('(') + 1, text.lastIndexOf(')')));
-          if (jsonData.table && jsonData.table.rows && jsonData.table.rows.length > 0) {
-            allArticles = jsonData.table.rows.map(row => ({
-              title: row.c[0]?.v || '',
-              authors: row.c[1]?.v || '',
-              abstract: row.c[2]?.v || '',
-              keywords: row.c[3]?.v || '',
-              pdf_link: row.c[4]?.v || '#',
-              publication_date: row.c[5]?.v ? formatDate(row.c[5].v) : ''
-            }));
-            renderArticles(allArticles);
-          } else if (jsonData.table && jsonData.table.rows && jsonData.table.rows.length === 0) {
-            articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد یا شیت مقالات خالی است.</p>';
+          if (jsonData.status === 'error') {
+              console.error("Google Sheet API error for articles:", jsonData.errors);
+              if(articlesContainer) articlesContainer.innerHTML = `<p style="text-align:center;">خطا در دریافت اطلاعات مقالات: ${jsonData.errors.map(e => e.message).join(', ')}</p>`;
+              return;
+          }
+          if (jsonData.table && jsonData.table.rows) {
+            if (jsonData.table.rows.length > 0) {
+                allArticles = jsonData.table.rows.map(row => ({
+                  title: row.c[0]?.v || '',
+                  authors: row.c[1]?.v || '',
+                  abstract: row.c[2]?.v || '',
+                  keywords: row.c[3]?.v || '',
+                  pdf_link: row.c[4]?.v || '#',
+                  publication_date: row.c[5]?.v ? formatDate(row.c[5].v) : ''
+                }));
+                renderArticles(allArticles);
+            } else {
+                allArticles = []; // Ensure it's an empty array
+                renderArticles([]); // Call render to display "no articles" message
+            }
           } else {
-            articlesContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات مقالات از گوگل شیت. لطفا تنظیمات اشتراک گذاری شیت را بررسی کنید یا ID شیت صحیح باشد.</p>';
-            console.error("Error parsing Google Sheet data for articles or sheet is empty/misconfigured:", jsonData);
+            if(articlesContainer) articlesContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات مقالات از گوگل شیت. فرمت پاسخ نامعتبر است یا شیت منتشر نشده.</p>';
+            console.error("Error parsing Google Sheet data for articles or sheet is misconfigured/not published:", jsonData);
           }
         })
         .catch(error => {
-          console.error('Error fetching articles:', error);
-          articlesContainer.innerHTML = '<p style="text-align:center;">خطا در برقراری ارتباط برای دریافت مقالات. لطفا بعداً تلاش کنید.</p>';
+          console.error('Network error or other issue fetching articles:', error);
+          if(articlesContainer) articlesContainer.innerHTML = '<p style="text-align:center;">خطا در برقراری ارتباط برای دریافت مقالات. لطفا اتصال اینترنت خود را بررسی کرده و مجدداً تلاش کنید.</p>';
         })
         .finally(() => {
-            // در هر صورت، پس از اتمام بارگذاری مقالات (موفق یا ناموفق) صفحه را نمایش بده
             showPageContent();
         });
     }
@@ -689,19 +477,28 @@
         return dateString;
     }
 
-    searchInput.addEventListener('input', () => {
-      const searchTerm = searchInput.value.trim().toLowerCase();
-      const filteredArticles = allArticles.filter(article =>
-        (article.title && article.title.toLowerCase().includes(searchTerm)) ||
-        (article.authors && article.authors.toLowerCase().includes(searchTerm)) ||
-        (article.keywords && article.keywords.toLowerCase().includes(searchTerm)) ||
-        (article.abstract && article.abstract.toLowerCase().includes(searchTerm))
-      );
-      renderArticles(filteredArticles);
-    });
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const searchTerm = searchInput.value.trim().toLowerCase();
+          const filteredArticles = allArticles.filter(article =>
+            (article.title && article.title.toLowerCase().includes(searchTerm)) ||
+            (article.authors && article.authors.toLowerCase().includes(searchTerm)) ||
+            (article.keywords && article.keywords.toLowerCase().includes(searchTerm)) ||
+            (article.abstract && article.abstract.toLowerCase().includes(searchTerm))
+          );
+          renderArticles(filteredArticles);
+        });
+    } else {
+        console.warn("Search input element not found.");
+    }
+
 
     // --- Journal Info Modal ---
     function toggleJournalInfo(show, section = 'about') {
+      if (!journalInfoModal || !modalTitleInfo || !modalSectionAbout || !modalSectionContact) {
+          console.error("One or more elements for Journal Info Modal are missing.");
+          return;
+      }
       if (show) {
         if (section === 'about') {
           modalTitleInfo.textContent = 'درباره سالنامه علمی تبیان';
@@ -720,9 +517,13 @@
 
     // --- Journal Issues Modal and Data Fetching ---
     function renderIssues(list) {
-        issuesTableContainer.innerHTML = ''; // Clear previous content
+        if (!issuesTableContainer) {
+            console.error("issuesTableContainer is not defined for renderIssues");
+            return;
+        }
+        issuesTableContainer.innerHTML = '';
         if (list.length === 0) {
-            issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد.</p>';
+            issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد یا شیت دوره‌ها خالی است.</p>';
             return;
         }
 
@@ -763,53 +564,67 @@
     }
 
     function fetchIssues() {
-        // اگر قبلا بارگذاری شده، دوباره fetch نکن
+        if (!issuesSheetId) {
+            console.error("issuesSheetId is not defined.");
+            if(issuesTableContainer) issuesTableContainer.innerHTML = '<p style="text-align:center;">خطای پیکربندی: شناسه شیت دوره‌ها یافت نشد.</p>';
+            return;
+        }
+        // اگر قبلا بارگذاری شده، دوباره fetch نکن (این شرط قبلا هم بود، فقط برای اطمینان چک می شود)
         if (allIssues.length > 0) {
             renderIssues(allIssues);
             return;
         }
-        issuesTableContainer.innerHTML = '<p style="text-align:center;">در حال بارگذاری اطلاعات دوره‌ها...</p>';
+        if(issuesTableContainer) issuesTableContainer.innerHTML = '<p style="text-align:center;">در حال بارگذاری اطلاعات دوره‌ها...</p>';
 
         fetch(`https://docs.google.com/spreadsheets/d/${issuesSheetId}/gviz/tq?tqx=out:json`)
             .then(response => response.text())
             .then(text => {
                 const jsonData = JSON.parse(text.substring(text.indexOf('(') + 1, text.lastIndexOf(')')));
-                if (jsonData.table && jsonData.table.rows && jsonData.table.rows.length > 0) {
-                    allIssues = jsonData.table.rows.map(row => ({
-                        // ستون ها: issue_number, year, full_issue_pdf_link
-                        issue_number: row.c[0]?.v || '',
-                        year: row.c[1]?.v || '',
-                        pdf_link: row.c[2]?.v || '#'
-                    }));
-                    renderIssues(allIssues);
-                } else if (jsonData.table && jsonData.table.rows && jsonData.table.rows.length === 0) {
-                   issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد یا شیت دوره‌ها خالی است.</p>';
+                if (jsonData.status === 'error') {
+                    console.error("Google Sheet API error for issues:", jsonData.errors);
+                    if(issuesTableContainer) issuesTableContainer.innerHTML = `<p style="text-align:center;">خطا در دریافت اطلاعات دوره‌ها: ${jsonData.errors.map(e => e.message).join(', ')}</p>`;
+                    return;
+                }
+                if (jsonData.table && jsonData.table.rows) {
+                     if (jsonData.table.rows.length > 0) {
+                        allIssues = jsonData.table.rows.map(row => ({
+                            issue_number: row.c[0]?.v || '',
+                            year: row.c[1]?.v || '',
+                            pdf_link: row.c[2]?.v || '#'
+                        }));
+                        renderIssues(allIssues);
+                    } else {
+                        allIssues = []; // Ensure it's an empty array
+                        renderIssues([]); // Call render to display "no issues" message
+                    }
                 }
                 else {
-                    issuesTableContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات دوره‌ها از گوگل شیت. لطفا تنظیمات اشتراک گذاری شیت را بررسی کنید یا ID شیت صحیح باشد.</p>';
-                    console.error("Error parsing Google Sheet data for issues or sheet is empty/misconfigured:", jsonData);
+                    if(issuesTableContainer) issuesTableContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات دوره‌ها از گوگل شیت. فرمت پاسخ نامعتبر است یا شیت منتشر نشده.</p>';
+                    console.error("Error parsing Google Sheet data for issues or sheet is misconfigured/not published:", jsonData);
                 }
             })
             .catch(error => {
-                console.error('Error fetching issues:', error);
-                issuesTableContainer.innerHTML = '<p style="text-align:center;">خطا در برقراری ارتباط برای دریافت اطلاعات دوره‌ها. لطفا بعداً تلاش کنید.</p>';
+                console.error('Network error or other issue fetching issues:', error);
+                if(issuesTableContainer) issuesTableContainer.innerHTML = '<p style="text-align:center;">خطا در برقراری ارتباط برای دریافت اطلاعات دوره‌ها. لطفا بعداً تلاش کنید.</p>';
             });
     }
 
     function toggleIssuesModal(show) {
+      if (!journalIssuesModal) {
+          console.error("journalIssuesModal element is missing.");
+          return;
+      }
       if (show) {
         journalIssuesModal.style.display = 'flex';
-        // فقط اگر اولین بار است مودال باز می شود یا می خواهید هر بار اطلاعات بروز شود، fetch کنید
-        if (allIssues.length === 0 || issuesSheetId !== 'YOUR_ISSUES_GOOGLE_SHEET_ID_HERE') {
+        if (allIssues.length === 0) { // فقط اگر اولین بار است، fetch کن
              fetchIssues();
         } else {
-            renderIssues(allIssues); // اگر داده ها قبلا بارگذاری شده اند، فقط نمایش بده
+            renderIssues(allIssues);
         }
       } else {
         journalIssuesModal.style.display = 'none';
       }
     }
-
   </script>
 
 </body>
