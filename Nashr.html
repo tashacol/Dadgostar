@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -235,17 +235,10 @@
       padding: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: box-shadow 0.3s ease;
-      display: flex; /* برای کنترل بهتر دکمه دانلود */
-      flex-direction: column; /* چیدمان عمودی محتوا */
     }
     .article-card:hover {
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-
-    .article-content-wrapper { /* برای اینکه دکمه در انتهای کارت قرار گیرد */
-        flex-grow: 1;
-    }
-
 
     .article-title {
       font-size: 1.6rem;
@@ -302,22 +295,16 @@
         margin-bottom: 5px;
     }
 
-    .download-button-container { /* کانتینر برای دکمه دانلود */
-        margin-top: auto; /* دکمه را به پایین کارت هل می دهد */
-        text-align: left; /* دکمه را به چپ منتقل می کند */
-    }
-
     .download-button {
-      display: inline-block; /* تغییر به inline-block برای text-align */
+      display: inline-block;
       background-color: var(--secondary-color);
       color: var(--light-text-color);
       padding: 10px 20px;
       border-radius: 5px;
       font-weight: bold;
-      /* text-align: center;  حذف شد چون کانتینر کنترل می کند */
+      text-align: center;
       transition: background-color 0.3s ease;
       font-size: 0.95rem;
-      /* margin-left: auto;  حذف شد، توسط کانتینر کنترل می شود */
     }
     .download-button:hover {
       background-color: var(--primary-color);
@@ -603,7 +590,8 @@
     const articlesSheetId = '1Kf49GtmSZbX2Or8dgzqarq5MVxSnv17jRPNPxeLL_wk';
     const issuesSheetId = '15nuHXnC40udicxyaiiZcsagZVVrss8LXPhK3FOwfI_c';
 
-    const latestCoverImageUrl = 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg'; // مثال: 'https://example.com/covers/latest-issue.jpg'
+    // <<-- مهم: لینک مستقیم به تصویر جلد آخرین دوره را اینجا قرار دهید
+    const latestCoverImageUrl = 'https://tashacol.github.io/Dadgostar/IMG_۲۰۲۵۰۵۱۹_۲۲۴۱۱۳.png'; // مثال: 'https://example.com/covers/latest-issue.jpg'
     const showCoverModalOnLoad = true;
 
     const articlesContainer = document.getElementById('articles-container');
@@ -622,14 +610,16 @@
     let allArticles = [];
     let allIssues = [];
     let articlesFetched = false;
-    let coverImagePreloaded = false;
+    let coverImagePreloaded = false; // فلگ برای پیگیری پیش‌بارگذاری تصویر جلد
 
+    // --- Function to preload cover image ---
     function preloadCoverImage(url) {
         if (!url || url === 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
-            coverImagePreloaded = true;
-            return Promise.resolve();
+            console.warn('Cover image URL is not set or is a placeholder.');
+            coverImagePreloaded = true; // Assume preloaded (or no image to load)
+            return Promise.resolve(); // Immediately resolve if no valid URL
         }
-        return new Promise((resolve) => { // همیشه resolve شود حتی در صورت خطا
+        return new Promise((resolve, reject) => {
             const img = new Image();
             img.onload = () => {
                 console.log('Cover image preloaded.');
@@ -638,44 +628,50 @@
             };
             img.onerror = () => {
                 console.error('Failed to preload cover image.');
-                coverImagePreloaded = true;
-                resolve(); // حتی در صورت خطا، resolve کن تا لودینگ ادامه یابد
+                coverImagePreloaded = true; // Still mark as "attempted"
+                reject();
             };
             img.src = url;
         });
     }
 
     function showPageContent() {
+        // صفحه را فقط زمانی نمایش بده که هم مقالات fetch شده باشند و هم تلاش برای پیش‌بارگذاری تصویر جلد انجام شده باشد
         if (articlesFetched && coverImagePreloaded) {
             pageWrapper.classList.add('visible');
             pageWrapper.classList.remove('hidden-until-ready');
             loadingOverlay.style.opacity = '0';
             setTimeout(() => {
                 loadingOverlay.style.display = 'none';
-                if (showCoverModalOnLoad && latestCoverImageUrl && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
-                    setTimeout(() => {
+                if (showCoverModalOnLoad && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
+                    setTimeout(() => { // تاخیر کوتاه برای نمایش مودال جلد
                         toggleCoverModal(true);
-                    }, 300);
+                    }, 300); // 0.3 ثانیه تاخیر
                 }
-            }, 500);
+            }, 500); // انیمیشن محو شدن لودینگ
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         articlesContainer.innerHTML = '<p style="text-align:center;">در حال بارگذاری مقالات...</p>';
+
         const fontLoadPromise = document.fonts && typeof document.fonts.ready === 'object' ?
             document.fonts.ready :
             Promise.resolve();
+
+        // شروع همزمان پیش‌بارگذاری تصویر جلد و بررسی فونت‌ها
         const coverPreloadPromise = preloadCoverImage(latestCoverImageUrl);
 
         Promise.all([fontLoadPromise, coverPreloadPromise])
             .then(() => {
-                fetchArticles();
+                console.log('Fonts and Cover Image (attempted) preloading are ready.');
+                fetchArticles(); // پس از آماده شدن فونت‌ها و تلاش برای پیش‌بارگذاری جلد، مقالات را fetch کن
             })
-            .catch(err => { // این catch احتمالاً هرگز فراخوانی نمی‌شود چون preloadCoverImage همیشه resolve می‌شود
+            .catch(err => {
                 console.warn('Error during initial loading (fonts/cover):', err);
-                fetchArticles();
+                fetchArticles(); // حتی در صورت خطا، سعی کن مقالات را بارگذاری کنی
             });
+
 
         if (coverImageDisplay) {
             coverImageDisplay.addEventListener('click', () => {
@@ -698,19 +694,15 @@
         const card = document.createElement('article');
         card.className = 'article-card';
         card.innerHTML = `
-          <div class="article-content-wrapper">
-            <h3 class="article-title">${article.title || 'بدون عنوان'}</h3>
-            <div class="article-meta">
-              ${article.authors ? `<span><strong>نویسندگان:</strong> ${article.authors}</span>` : ''}
-              ${article.publication_date ? `<span><strong>تاریخ انتشار:</strong> ${article.publication_date}</span>` : ''}
-            </div>
-            ${article.abstract ? `<div class="article-abstract">${article.abstract}</div>
-            ${article.abstract.length > 200 ? '<span class="read-more-abstract">مشاهده بیشتر چکیده</span><span class="show-less-abstract" style="display:none;">نمایش کمتر</span>' : ''}` : ''}
-            ${article.keywords ? `<div class="article-keywords"><strong>کلیدواژه‌ها:</strong> ${article.keywords.split(',').map(kw => `<span>${kw.trim()}</span>`).join('')}</div>` : ''}
+          <h3 class="article-title">${article.title || 'بدون عنوان'}</h3>
+          <div class="article-meta">
+            ${article.authors ? `<span><strong>نویسندگان:</strong> ${article.authors}</span>` : ''}
+            ${article.publication_date ? `<span><strong>تاریخ انتشار:</strong> ${article.publication_date}</span>` : ''}
           </div>
-          <div class="download-button-container">
-            ${article.pdf_link && article.pdf_link !== '#' ? `<a href="${article.pdf_link}" class="download-button" target="_blank" rel="noopener noreferrer">دانلود مقاله</a>` : '<p style="text-align:left; margin-top:10px;">فایل PDF در دسترس نیست.</p>'}
-          </div>
+          ${article.abstract ? `<div class="article-abstract">${article.abstract}</div>
+          ${article.abstract.length > 200 ? '<span class="read-more-abstract">مشاهده بیشتر چکیده</span><span class="show-less-abstract" style="display:none;">نمایش کمتر</span>' : ''}` : ''}
+          ${article.keywords ? `<div class="article-keywords"><strong>کلیدواژه‌ها:</strong> ${article.keywords.split(',').map(kw => `<span>${kw.trim()}</span>`).join('')}</div>` : ''}
+          ${article.pdf_link && article.pdf_link !== '#' ? `<a href="${article.pdf_link}" class="download-button" target="_blank" rel="noopener noreferrer">دانلود مقاله</a>` : '<p>فایل PDF در دسترس نیست.</p>'}
         `;
         articlesContainer.appendChild(card);
         const readMoreBtn = card.querySelector('.read-more-abstract');
@@ -749,7 +741,7 @@
         })
         .finally(() => {
             articlesFetched = true;
-            showPageContent();
+            showPageContent(); // تلاش برای نمایش صفحه پس از اتمام fetch مقالات
         });
     }
 
@@ -769,8 +761,8 @@
       const filteredArticles = allArticles.filter(article =>
         (article.title && article.title.toLowerCase().includes(searchTerm)) ||
         (article.authors && article.authors.toLowerCase().includes(searchTerm)) ||
-        (article.keywords && article.keywords.toLowerCase().includes(searchTerm))
-        // حذف جستجو در چکیده: (article.abstract && article.abstract.toLowerCase().includes(searchTerm))
+        (article.keywords && article.keywords.toLowerCase().includes(searchTerm)) ||
+        (article.abstract && article.abstract.toLowerCase().includes(searchTerm))
       );
       renderArticles(filteredArticles);
     });
@@ -805,7 +797,7 @@
                 <tr><td>${issue.issue_number || '-'}</td><td>${issue.year || '-'}</td>
                 <td style="text-align: center;">
                     ${issue.pdf_link && issue.pdf_link !== '#' ?
-                    `<a href="${issue.pdf_link}" class="download-button small" target="_blank" rel="noopener noreferrer">دانلود PDF</a>` : // متن اینجا هنوز PDF دارد، اگر میخواهید تغییر کند باید این را هم تغییر دهید
+                    `<a href="${issue.pdf_link}" class="download-button small" target="_blank" rel="noopener noreferrer">دانلود PDF</a>` :
                     'فایل در دسترس نیست'}
                 </td></tr>`).join('')}</tbody>`;
         issuesTableContainer.appendChild(table);
@@ -836,7 +828,7 @@
     }
 
     function toggleIssuesModal(show) {
-      if (show && allIssues.length === 0 && issuesSheetId !== 'PLACEHOLDER_FOR_ISSUES_ID') { fetchIssues(); } // PLACEHOLDER_FOR_ISSUES_ID باید با یک مقدار غیر از شناسه واقعی جایگزین شود اگر میخواهید اولین بار fetch کند
+      if (show && allIssues.length === 0 && issuesSheetId !== 'PLACEHOLDER_FOR_ISSUES_ID') { fetchIssues(); }
       else if (show) { renderIssues(allIssues); }
       toggleModal(journalIssuesModal, show);
     }
@@ -847,9 +839,11 @@
                 coverImageDisplay.src = latestCoverImageUrl;
             } else if (coverImageDisplay) {
                 coverImageDisplay.alt = "تصویر جلد در دسترس نیست";
-                coverImageDisplay.src = "";
+                coverImageDisplay.src = ""; // برای جلوگیری از نمایش آیکون تصویر شکسته
+                // اگر URL تصویر جلد معتبر نیست، مودال جلد اصلا نمایش داده نشود
                 if (!latestCoverImageUrl || latestCoverImageUrl === 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
-                    return;
+                    console.warn("Cover image URL is invalid, not showing cover modal.");
+                    return; // از نمایش مودال جلوگیری کن
                 }
             }
         }
