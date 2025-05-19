@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -323,7 +323,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.7); /* کمی تیره‌تر برای مودال جلد */
+      background: rgba(0,0,0,0.7);
       align-items: center;
       justify-content: center;
       z-index: 1000;
@@ -347,7 +347,7 @@
       font-family: var(--font-family);
       transform: scale(0.95);
       transition: transform 0.3s ease-in-out;
-      position: relative; /* برای دکمه بستن مطلق */
+      position: relative;
     }
     .modal-overlay.visible .modal-content {
         transform: scale(1);
@@ -406,24 +406,23 @@
         margin: 0 auto;
     }
 
-    /* Styles for Cover Modal */
     #cover-modal .modal-content {
-        max-width: 500px; /* یا اندازه دلخواه برای جلد */
+        max-width: 500px;
         padding: 20px;
         text-align: center;
     }
     #cover-image-display {
         max-width: 100%;
-        max-height: 60vh; /* محدودیت ارتفاع اولیه */
+        max-height: 60vh;
         border: 2px solid var(--border-color);
         border-radius: 4px;
         cursor: zoom-in;
         transition: transform 0.3s ease, max-height 0.3s ease;
-        object-fit: contain; /* برای حفظ نسبت تصویر */
+        object-fit: contain;
     }
     #cover-image-display.zoomed {
-        max-height: 85vh; /* ارتفاع بیشتر در حالت زوم */
-        transform: scale(1.1); /* کمی بزرگتر */
+        max-height: 85vh;
+        transform: scale(1.1);
         cursor: zoom-out;
         box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     }
@@ -434,8 +433,8 @@
     }
     .modal-close-button {
         position: absolute;
-        top: -10px; /* تنظیم برای قرارگیری مناسب */
-        left: -10px; /* تنظیم برای قرارگیری مناسب */
+        top: -10px;
+        left: -10px;
         background: var(--primary-color);
         color: white;
         border: 2px solid white;
@@ -443,7 +442,7 @@
         width: 35px;
         height: 35px;
         font-size: 20px;
-        line-height: 32px; /* تنظیم برای وسط چین عمودی متن */
+        line-height: 32px;
         text-align: center;
         cursor: pointer;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -453,23 +452,6 @@
     .modal-close-button:hover {
         background-color: var(--secondary-color);
         transform: scale(1.1);
-    }
-
-
-    .close-modal-btn { /* دکمه بستن عمومی در پایین مودال */
-      display: block;
-      margin: 20px auto 0;
-      background: #dc3545;
-      color: var(--light-text-color);
-      border: none;
-      padding: 10px 25px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
-    }
-    .close-modal-btn:hover {
-      background: #c82333;
     }
 
     .site-footer {
@@ -498,9 +480,8 @@
           font-size: 0.8rem;
           padding: 5px 10px;
       }
-      #cover-modal .modal-content { max-width: 90vw; } /* برای صفحه های کوچکتر */
+      #cover-modal .modal-content { max-width: 90vw; }
       .modal-close-button { top: 5px; left: 5px; width:30px; height:30px; font-size:18px; line-height:28px;}
-
     }
     @media (max-width: 480px) {
         .article-title { font-size: 1.3rem; }
@@ -583,7 +564,6 @@
         <p><strong>پست الکترونیکی:</strong> <a href="mailto:SciTebyan@gmail.com">SciTebyan@gmail.com</a></p>
         <p><strong>تلفن تماس:</strong> (در صورت وجود، شماره تلفن را اینجا وارد کنید)</p>
       </div>
-      <!-- <button class="close-modal-btn" onclick="toggleJournalInfo(false)">بستن</button> -->
     </div>
   </div>
 
@@ -594,11 +574,9 @@
       <div id="issues-table-container">
         <p style="text-align:center;">در حال بارگذاری اطلاعات دوره‌ها...</p>
       </div>
-      <!-- <button class="close-modal-btn" onclick="toggleIssuesModal(false)">بستن</button> -->
     </div>
   </div>
 
-  <!-- Modal for Latest Cover Image -->
   <div id="cover-modal" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close-button" onclick="toggleCoverModal(false)" title="بستن">×</button>
@@ -609,53 +587,68 @@
 
 
   <script>
-    // --- Google Sheet IDs ---
     const articlesSheetId = '1Kf49GtmSZbX2Or8dgzqarq5MVxSnv17jRPNPxeLL_wk';
     const issuesSheetId = '15nuHXnC40udicxyaiiZcsagZVVrss8LXPhK3FOwfI_c';
 
-    // --- Configuration ---
     // <<-- مهم: لینک مستقیم به تصویر جلد آخرین دوره را اینجا قرار دهید
     const latestCoverImageUrl = 'https://tashacol.github.io/Dadgostar/IMG_۲۰۲۵۰۵۱۹_۲۲۴۱۱۳.png'; // مثال: 'https://example.com/covers/latest-issue.jpg'
-    const showCoverModalOnLoad = true; // برای نمایش مودال جلد هنگام ورود (فقط یکبار در هر session)
+    const showCoverModalOnLoad = true;
 
-    // --- DOM Elements ---
     const articlesContainer = document.getElementById('articles-container');
     const searchInput = document.getElementById('search-bar');
     const loadingOverlay = document.getElementById('loading-overlay');
     const pageWrapper = document.getElementById('page-wrapper');
-
     const journalInfoModal = document.getElementById('journal-info-modal');
     const modalTitleInfo = document.getElementById('modal-title-info');
     const modalSectionAbout = document.getElementById('modal-section-about');
     const modalSectionContact = document.getElementById('modal-section-contact');
-
     const journalIssuesModal = document.getElementById('journal-issues-modal');
     const issuesTableContainer = document.getElementById('issues-table-container');
-
     const coverModal = document.getElementById('cover-modal');
     const coverImageDisplay = document.getElementById('cover-image-display');
 
-    // --- State Variables ---
     let allArticles = [];
     let allIssues = [];
     let articlesFetched = false;
+    let coverImagePreloaded = false; // فلگ برای پیگیری پیش‌بارگذاری تصویر جلد
 
-    // --- Page Load and Font Handling ---
+    // --- Function to preload cover image ---
+    function preloadCoverImage(url) {
+        if (!url || url === 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
+            console.warn('Cover image URL is not set or is a placeholder.');
+            coverImagePreloaded = true; // Assume preloaded (or no image to load)
+            return Promise.resolve(); // Immediately resolve if no valid URL
+        }
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => {
+                console.log('Cover image preloaded.');
+                coverImagePreloaded = true;
+                resolve();
+            };
+            img.onerror = () => {
+                console.error('Failed to preload cover image.');
+                coverImagePreloaded = true; // Still mark as "attempted"
+                reject();
+            };
+            img.src = url;
+        });
+    }
+
     function showPageContent() {
-        if (articlesFetched) {
+        // صفحه را فقط زمانی نمایش بده که هم مقالات fetch شده باشند و هم تلاش برای پیش‌بارگذاری تصویر جلد انجام شده باشد
+        if (articlesFetched && coverImagePreloaded) {
             pageWrapper.classList.add('visible');
             pageWrapper.classList.remove('hidden-until-ready');
             loadingOverlay.style.opacity = '0';
             setTimeout(() => {
                 loadingOverlay.style.display = 'none';
-                // نمایش مودال جلد پس از بارگذاری صفحه و با تاخیر کوتاه
-                if (showCoverModalOnLoad && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg' && !sessionStorage.getItem('coverModalShown')) {
-                    setTimeout(() => {
+                if (showCoverModalOnLoad && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
+                    setTimeout(() => { // تاخیر کوتاه برای نمایش مودال جلد
                         toggleCoverModal(true);
-                        sessionStorage.setItem('coverModalShown', 'true');
-                    }, 500); // نیم ثانیه تاخیر
+                    }, 300); // 0.3 ثانیه تاخیر
                 }
-            }, 500);
+            }, 500); // انیمیشن محو شدن لودینگ
         }
     }
 
@@ -666,15 +659,20 @@
             document.fonts.ready :
             Promise.resolve();
 
-        fontLoadPromise.then(() => {
-            console.log('Fonts considered ready.');
-            fetchArticles();
-        }).catch(err => {
-            console.warn('Font loading check error:', err);
-            fetchArticles();
-        });
+        // شروع همزمان پیش‌بارگذاری تصویر جلد و بررسی فونت‌ها
+        const coverPreloadPromise = preloadCoverImage(latestCoverImageUrl);
 
-        // Event listener برای بزرگنمایی تصویر جلد
+        Promise.all([fontLoadPromise, coverPreloadPromise])
+            .then(() => {
+                console.log('Fonts and Cover Image (attempted) preloading are ready.');
+                fetchArticles(); // پس از آماده شدن فونت‌ها و تلاش برای پیش‌بارگذاری جلد، مقالات را fetch کن
+            })
+            .catch(err => {
+                console.warn('Error during initial loading (fonts/cover):', err);
+                fetchArticles(); // حتی در صورت خطا، سعی کن مقالات را بارگذاری کنی
+            });
+
+
         if (coverImageDisplay) {
             coverImageDisplay.addEventListener('click', () => {
                 coverImageDisplay.classList.toggle('zoomed');
@@ -682,7 +680,6 @@
         }
     });
 
-    // --- Article Fetching and Rendering ---
     function renderArticles(list) {
       articlesContainer.innerHTML = '';
       if (list.length === 0 && allArticles.length > 0) {
@@ -693,12 +690,9 @@
          articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد.</p>';
          return;
       }
-
       list.forEach(article => {
         const card = document.createElement('article');
         card.className = 'article-card';
-        // متا تگ های Citation اینجا اضافه نمی شوند چون در body تاثیری برای گوگل اسکالر ندارند.
-        // برای سئوی بهتر مقالات، باید هر مقاله صفحه جداگانه با این متاها در <head> داشته باشد.
         card.innerHTML = `
           <h3 class="article-title">${article.title || 'بدون عنوان'}</h3>
           <div class="article-meta">
@@ -711,23 +705,14 @@
           ${article.pdf_link && article.pdf_link !== '#' ? `<a href="${article.pdf_link}" class="download-button" target="_blank" rel="noopener noreferrer">دانلود مقاله (PDF)</a>` : '<p>فایل PDF در دسترس نیست.</p>'}
         `;
         articlesContainer.appendChild(card);
-
         const readMoreBtn = card.querySelector('.read-more-abstract');
         const showLessBtn = card.querySelector('.show-less-abstract');
         const abstractDiv = card.querySelector('.article-abstract');
         if (readMoreBtn && abstractDiv) {
-          readMoreBtn.addEventListener('click', () => {
-            abstractDiv.classList.add('expanded');
-            readMoreBtn.style.display = 'none';
-            if(showLessBtn) showLessBtn.style.display = 'inline-block';
-          });
+          readMoreBtn.addEventListener('click', () => { abstractDiv.classList.add('expanded'); readMoreBtn.style.display = 'none'; if(showLessBtn) showLessBtn.style.display = 'inline-block'; });
         }
         if (showLessBtn && abstractDiv) {
-           showLessBtn.addEventListener('click', () => {
-            abstractDiv.classList.remove('expanded');
-            showLessBtn.style.display = 'none';
-            if(readMoreBtn) readMoreBtn.style.display = 'inline-block';
-          });
+           showLessBtn.addEventListener('click', () => { abstractDiv.classList.remove('expanded'); showLessBtn.style.display = 'none'; if(readMoreBtn) readMoreBtn.style.display = 'inline-block'; });
         }
       });
     }
@@ -739,17 +724,12 @@
           const jsonData = JSON.parse(text.substring(text.indexOf('(') + 1, text.lastIndexOf(')')));
           if (jsonData.table && jsonData.table.rows) {
             allArticles = jsonData.table.rows.map(row => ({
-              title: row.c[0]?.v || '',
-              authors: row.c[1]?.v || '',
-              abstract: row.c[2]?.v || '',
-              keywords: row.c[3]?.v || '',
-              pdf_link: row.c[4]?.v || '#',
+              title: row.c[0]?.v || '', authors: row.c[1]?.v || '', abstract: row.c[2]?.v || '',
+              keywords: row.c[3]?.v || '', pdf_link: row.c[4]?.v || '#',
               publication_date: row.c[5]?.v ? formatDate(row.c[5].v) : ''
             }));
             renderArticles(allArticles);
-            if (allArticles.length === 0) {
-                articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد.</p>';
-            }
+            if (allArticles.length === 0) { articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد.</p>'; }
           } else {
             articlesContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات مقالات. لطفا تنظیمات اشتراک گذاری شیت را بررسی کنید.</p>';
             console.error("Error parsing Google Sheet data for articles:", jsonData);
@@ -761,7 +741,7 @@
         })
         .finally(() => {
             articlesFetched = true;
-            showPageContent();
+            showPageContent(); // تلاش برای نمایش صفحه پس از اتمام fetch مقالات
         });
     }
 
@@ -769,9 +749,7 @@
         if (typeof dateString === 'string' && dateString.startsWith('Date(')) {
             try {
                 const parts = dateString.substring(5, dateString.length - 1).split(',');
-                const year = parseInt(parts[0]);
-                const month = parseInt(parts[1]) + 1;
-                const day = parseInt(parts[2]);
+                const year = parseInt(parts[0]); const month = parseInt(parts[1]) + 1; const day = parseInt(parts[2]);
                 return `${year}/${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}`;
             } catch (e) { return dateString; }
         }
@@ -789,13 +767,10 @@
       renderArticles(filteredArticles);
     });
 
-    // --- Modal Toggling Functions ---
     function toggleModal(modalElement, show) {
-        if (show) {
-            modalElement.classList.add('visible');
-        } else {
+        if (show) { modalElement.classList.add('visible'); }
+        else {
             modalElement.classList.remove('visible');
-            // اگر تصویر جلد زوم شده بود، از حالت زوم خارج کن
             if (modalElement === coverModal && coverImageDisplay.classList.contains('zoomed')) {
                 coverImageDisplay.classList.remove('zoomed');
             }
@@ -804,57 +779,32 @@
 
     function toggleJournalInfo(show, section = 'about') {
       if (show) {
-        if (section === 'about') {
-          modalTitleInfo.textContent = 'درباره سالنامه علمی تبیان';
-          modalSectionAbout.style.display = 'block';
-          modalSectionContact.style.display = 'none';
-        } else if (section === 'contact') {
-          modalTitleInfo.textContent = 'اطلاعات تماس';
-          modalSectionAbout.style.display = 'none';
-          modalSectionContact.style.display = 'block';
-        }
+        modalTitleInfo.textContent = section === 'about' ? 'درباره سالنامه علمی تبیان' : 'اطلاعات تماس';
+        modalSectionAbout.style.display = section === 'about' ? 'block' : 'none';
+        modalSectionContact.style.display = section === 'contact' ? 'block' : 'none';
       }
       toggleModal(journalInfoModal, show);
     }
 
-    // --- Journal Issues Modal ---
     function renderIssues(list) {
         issuesTableContainer.innerHTML = '';
-        if (list.length === 0) {
-            issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد.</p>';
-            return;
-        }
+        if (list.length === 0) { issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد.</p>'; return; }
         const table = document.createElement('table');
         table.innerHTML = `
-            <thead>
-                <tr>
-                    <th>شماره دوره</th>
-                    <th>سال انتشار</th>
-                    <th>دانلود فایل کامل دوره</th>
-                </tr>
-            </thead>
+            <thead><tr><th>شماره دوره</th><th>سال انتشار</th><th>دانلود فایل کامل دوره</th></tr></thead>
             <tbody>
             ${list.map(issue => `
-                <tr>
-                    <td>${issue.issue_number || '-'}</td>
-                    <td>${issue.year || '-'}</td>
-                    <td style="text-align: center;">
-                        ${issue.pdf_link && issue.pdf_link !== '#' ?
-                        `<a href="${issue.pdf_link}" class="download-button small" target="_blank" rel="noopener noreferrer">دانلود PDF</a>` :
-                        'فایل در دسترس نیست'}
-                    </td>
-                </tr>
-            `).join('')}
-            </tbody>
-        `;
+                <tr><td>${issue.issue_number || '-'}</td><td>${issue.year || '-'}</td>
+                <td style="text-align: center;">
+                    ${issue.pdf_link && issue.pdf_link !== '#' ?
+                    `<a href="${issue.pdf_link}" class="download-button small" target="_blank" rel="noopener noreferrer">دانلود PDF</a>` :
+                    'فایل در دسترس نیست'}
+                </td></tr>`).join('')}</tbody>`;
         issuesTableContainer.appendChild(table);
     }
 
     function fetchIssues() {
-        if (allIssues.length > 0) {
-            renderIssues(allIssues);
-            return;
-        }
+        if (allIssues.length > 0) { renderIssues(allIssues); return; }
         issuesTableContainer.innerHTML = '<p style="text-align:center;">در حال بارگذاری اطلاعات دوره‌ها...</p>';
         fetch(`https://docs.google.com/spreadsheets/d/${issuesSheetId}/gviz/tq?tqx=out:json`)
             .then(response => response.text())
@@ -862,14 +812,10 @@
                 const jsonData = JSON.parse(text.substring(text.indexOf('(') + 1, text.lastIndexOf(')')));
                 if (jsonData.table && jsonData.table.rows) {
                     allIssues = jsonData.table.rows.map(row => ({
-                        issue_number: row.c[0]?.v || '',
-                        year: row.c[1]?.v || '',
-                        pdf_link: row.c[2]?.v || '#'
+                        issue_number: row.c[0]?.v || '', year: row.c[1]?.v || '', pdf_link: row.c[2]?.v || '#'
                     }));
                     renderIssues(allIssues);
-                     if (allIssues.length === 0) {
-                        issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد.</p>';
-                    }
+                    if (allIssues.length === 0) { issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد.</p>';}
                 } else {
                     issuesTableContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات دوره‌ها. لطفا تنظیمات اشتراک گذاری شیت را بررسی کنید.</p>';
                     console.error("Error parsing Google Sheet data for issues:", jsonData);
@@ -882,26 +828,27 @@
     }
 
     function toggleIssuesModal(show) {
-      if (show && allIssues.length === 0 && issuesSheetId !== 'PLACEHOLDER_ID_FOR_ISSUES_SHEET') { // جلوگیری از fetch اگر شناسه پیشفرض است
-         fetchIssues();
-      } else if (show) {
-         renderIssues(allIssues);
-      }
+      if (show && allIssues.length === 0 && issuesSheetId !== 'PLACEHOLDER_FOR_ISSUES_ID') { fetchIssues(); }
+      else if (show) { renderIssues(allIssues); }
       toggleModal(journalIssuesModal, show);
     }
 
-    // --- Cover Modal Functionality ---
     function toggleCoverModal(show) {
         if (show) {
-            if (coverImageDisplay && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
+            if (coverImageDisplay && latestCoverImageUrl && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
                 coverImageDisplay.src = latestCoverImageUrl;
             } else if (coverImageDisplay) {
-                 coverImageDisplay.alt = "تصویر جلد در دسترس نیست"; // اگر URL معتبر نباشد
+                coverImageDisplay.alt = "تصویر جلد در دسترس نیست";
+                coverImageDisplay.src = ""; // برای جلوگیری از نمایش آیکون تصویر شکسته
+                // اگر URL تصویر جلد معتبر نیست، مودال جلد اصلا نمایش داده نشود
+                if (!latestCoverImageUrl || latestCoverImageUrl === 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
+                    console.warn("Cover image URL is invalid, not showing cover modal.");
+                    return; // از نمایش مودال جلوگیری کن
+                }
             }
         }
         toggleModal(coverModal, show);
     }
-
   </script>
 
 </body>
