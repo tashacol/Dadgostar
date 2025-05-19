@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- عنوان و توضیحات سئو -->
+  <title>سالنامه علمی تبیان - حوزه علمیه امام صادق (ع) جیرفت</title>
+  <meta name="description" content="سالنامه علمی تبیان، نشریه تخصصی در زمینه علوم حوزوی و اسلامی، منتشر شده توسط حوزه علمیه امام صادق علیه السلام جیرفت. دارای رتبه علمی اطلاع رسانی.">
+  <meta name="keywords" content="سالنامه علمی تبیان, حوزه علمیه امام صادق جیرفت, علوم حوزوی, علوم اسلامی, مقالات علمی, حجت الاسلام شهدادنژاد, حجت الاسلام پرموده, جیرفت, نشریه علمی">
+  <meta name="author" content="حوزه علمیه امام صادق علیه السلام جیرفت">
+  <meta name="owner" content="حوزه علمیه امام صادق علیه السلام جیرفت">
+  <meta name="publisher" content="حوزه علمیه امام صادق علیه السلام جیرفت">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://SciTebyan.ir/">
+
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_TOKEN">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://SciTebyan.ir/">
+  <meta property="og:title" content="سالنامه علمی تبیان - حوزه علمیه امام صادق (ع) جیرفت">
+  <meta property="og:description" content="سالنامه علمی تبیان، نشریه تخصصی در زمینه علوم حوزوی و اسلامی. مقالات پذیرفته شده طلاب سطوح حوزه علمیه امام صادق (ع) جیرفت.">
+  <meta property="og:image" content="https://SciTebyan.ir/cover-image.png"> <!-- یک تصویر مناسب برای اشتراک گذاری قرار دهید -->
+  <meta property="og:site_name" content="سالنامه علمی تبیان">
+  <meta property="og:locale" content="fa_IR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://SciTebyan.ir/">
+  <meta name="twitter:title" content="سالنامه علمی تبیان - حوزه علمیه امام صادق (ع) جیرفت">
+  <meta name="twitter:description" content="سالنامه علمی تبیان، نشریه تخصصی در زمینه علوم حوزوی و اسلامی. مقالات پذیرفته شده طلاب سطوح حوزه علمیه امام صادق (ع) جیرفت.">
+  <meta name="twitter:image" content="https://SciTebyan.ir/cover-image.png"> <!-- همان تصویر بالا -->
+
+  <!-- Favicon و آیکون‌های اپل -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- PWA Manifest (اختیاری، برای اپلیکیشن وب پیشرونده) -->
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
+  <meta name="theme-color" content="#003366"> <!-- یک رنگ سازمانی تیره -->
+
+  <!-- Structured Data (JSON-LD) برای سازمان و وبسایت -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://SciTebyan.ir/",
+    "name": "سالنامه علمی تبیان",
+    "description": "سالنامه علمی تبیان، نشریه تخصصی در زمینه علوم حوزوی و اسلامی، منتشر شده توسط حوزه علمیه امام صادق علیه السلام جیرفت.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "حوزه علمیه امام صادق علیه السلام جیرفت",
+      "url": "https://SciTebyan.ir/", // اگر حوزه وبسایت مجزا دارد، آدرس آن را بگذارید
+      "logo": "https://SciTebyan.ir/logo-organization.png" // لوگوی حوزه
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://SciTebyan.ir/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <!-- متا تگ های پایه برای گوگل اسکالر (برای کل سایت) -->
+  <meta name="citation_journal_title" content="سالنامه علمی تبیان">
+  <meta name="citation_publisher" content="حوزه علمیه امام صادق علیه السلام جیرفت">
+
+  <!-- Google Analytics GA4 -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID_HERE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_ID_HERE');
+  </script>
+
+  <!-- فونت وزیرمتن -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+  <style>
+    :root {
+      --primary-color: #003366; /* آبی تیره سازمانی */
+      --secondary-color: #0055A4; /* آبی روشن تر */
+      --accent-color: #D4AF37; /* طلایی یا یک رنگ مکمل دیگر */
+      --text-color: #333333;
+      --light-text-color: #f8f9fa;
+      --bg-color: #f8f9fa;
+      --card-bg-color: #ffffff;
+      --border-color: #dee2e6;
+      --font-family: 'Vazirmatn', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
+    a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .site-header {
+      background-color: var(--primary-color);
+      color: var(--light-text-color);
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--accent-color);
+    }
+    .site-header .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+    .site-header .logo-container img { /* برای لوگوی احتمالی */
+        max-height: 60px;
+    }
+    .site-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+    .site-header .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Navigation */
+    .main-nav {
+      background-color: var(--secondary-color);
+      padding: 10px 0;
+    }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .main-nav li {
+      margin: 0 15px;
+    }
+    .main-nav a {
+      color: var(--light-text-color);
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .main-nav a:hover, .main-nav a.active {
+      background-color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      padding: 30px 0;
+    }
+
+    #search-bar {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 30px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: var(--font-family);
+    }
+    #search-bar:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 0.2rem rgba(0, 85, 164, 0.25);
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: 1fr; /* یک ستونه برای ظاهر ژورنالی */
+      gap: 25px;
+    }
+
+    .article-card {
+      background-color: var(--card-bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    .article-card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .article-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .article-meta {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-bottom: 15px;
+    }
+    .article-meta span { margin-left: 15px; }
+    .article-meta strong { color: var(--text-color); }
+
+    .article-abstract {
+      font-size: 1rem;
+      color: #495057;
+      margin-bottom: 15px;
+      line-height: 1.7;
+      max-height: 100px; /* محدودیت ارتفاع چکیده */
+      overflow: hidden;
+      text-overflow: ellipsis; /* نمایش سه نقطه در صورت طولانی بودن */
+    }
+     .article-abstract.expanded {
+      max-height: none; /* نمایش کامل چکیده در حالت باز شده */
+    }
+
+    .read-more-abstract, .show-less-abstract {
+        color: var(--secondary-color);
+        cursor: pointer;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-bottom:15px;
+    }
+    .read-more-abstract:hover, .show-less-abstract:hover {
+        text-decoration: underline;
+    }
+
+
+    .article-keywords {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    .article-keywords strong { color: var(--text-color); }
+    .article-keywords span {
+        background-color: #e9ecef;
+        color: #495057;
+        padding: 3px 8px;
+        border-radius: 4px;
+        margin-left: 5px;
+        font-size: 0.85rem;
+    }
+
+    .download-button {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: var(--light-text-color);
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 500;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .download-button:hover {
+      background-color: var(--primary-color);
+      color: var(--light-text-color);
+      text-decoration: none;
+    }
+
+    /* Modal for Journal Info */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-content {
+      background: var(--card-bg-color);
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-content h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    .modal-content p {
+      margin-bottom: 12px;
+      line-height: 1.8;
+    }
+    .modal-content strong {
+      color: var(--text-color);
+    }
+    .modal-content ul {
+      list-style: disc;
+      margin-right: 20px;
+      margin-bottom: 15px;
+    }
+    .modal-content .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .modal-content .info-item {
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 4px;
+        border-right: 3px solid var(--secondary-color);
+    }
+
+    .close-modal-btn {
+      display: block;
+      margin: 20px auto 0;
+      background: #dc3545; /* قرمز برای بستن */
+      color: var(--light-text-color);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .close-modal-btn:hover {
+      background: #c82333;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: #343a40;
+      color: #adb5bd;
+      text-align: center;
+      padding: 25px 0;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+    .site-footer p { margin-bottom: 5px; }
+    .site-footer a { color: #ced4da; }
+    .site-footer a:hover { color: var(--light-text-color); }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .site-header h1 { font-size: 2rem; }
+      .site-header .subtitle { font-size: 1rem; }
+      .main-nav ul { flex-direction: column; }
+      .main-nav li { margin: 8px 0; }
+
+      .modal-content {
+        padding: 20px;
+      }
+       .modal-content h2 {
+        font-size: 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+        .article-title { font-size: 1.3rem; }
+        .article-meta, .article-abstract, .article-keywords { font-size: 0.85rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <!-- <div class="logo-container">
+        <img src="logo.png" alt="لوگوی سالنامه تبیان">
+      </div> -->
+      <h1>سالنامه علمی تبیان</h1>
+      <p class="subtitle">حوزه علمیه امام صادق علیه السلام جیرفت</p>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="container">
+      <ul>
+        <li><a href="#" class="active" onclick="return false;">صفحه اصلی مقالات</a></li>
+        <li><a href="#" onclick="toggleJournalInfo(true); return false;">درباره نشریه</a></li>
+        <li><a href="#" onclick="toggleJournalInfo(true, 'contact'); return false;">اطلاعات تماس</a></li>
+        <!-- <li><a href="#">آرشیو شماره‌ها</a></li> -->
+        <!-- <li><a href="#">راهنمای نویسندگان</a></li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="container">
+      <input type="text" id="search-bar" placeholder="جستجو در عنوان، نویسندگان یا کلیدواژه‌های مقالات...">
+      <div id="articles-container" class="articles-grid">
+        <!-- مقالات اینجا بارگذاری می‌شوند -->
+        <p style="text-align:center;">در حال بارگذاری مقالات...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for Journal Information -->
+  <div id="journal-info-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2 id="modal-title">درباره سالنامه علمی تبیان</h2>
+      <div id="modal-section-about">
+        <p><strong>سالنامه علمی تبیان</strong> یک نشریه تخصصی در زمینه علوم حوزوی و اسلامی است که توسط <strong>حوزه علمیه امام صادق علیه السلام جیرفت</strong> منتشر می‌شود. این سالنامه با هدف ترویج و نشر پژوهش‌های علمی طلاب و فضلای حوزه، به ویژه طلاب سطوح حوزه علمیه امام صادق (ع) جیرفت که مقالاتشان پس از طی فرآیند داوری علمی پذیرفته شده باشد، فعالیت می‌کند.</p>
+        <div class="info-grid">
+            <div class="info-item"><strong>صاحب امتیاز:</strong> حوزه علمیه امام صادق علیه السلام جیرفت</div>
+            <div class="info-item"><strong>مدیر مسئول:</strong> حجت الاسلام شهدادنژاد</div>
+            <div class="info-item"><strong>سردبیر:</strong> حجت الاسلام پرموده</div>
+            <div class="info-item"><strong>مجوز:</strong> دارای مجوز از شورای حوزه علمیه استان کرمان</div>
+            <div class="info-item"><strong>رتبه علمی:</strong> علمی - اطلاع رسانی</div>
+            <div class="info-item"><strong>زمینه تخصصی:</strong> علوم حوزوی و اسلامی</div>
+            <div class="info-item"><strong>دوره نشر:</strong> سالانه (انتشار در ۱۰ خرداد هر سال)</div>
+            <div class="info-item"><strong>نمایه‌سازی:</strong> تلاش برای نمایه شدن در گوگل اسکالر و پایگاه‌های علمی معتبر</div>
+        </div>
+        <p><strong>شرایط پذیرش مقاله:</strong></p>
+        <ul>
+          <li>مقالات باید در زمینه علوم حوزوی و اسلامی باشند.</li>
+          <li>نویسندگان باید از طلاب سطوح حوزه علمیه امام صادق (ع) جیرفت باشند.</li>
+          <li>مقالات باید اصیل بوده و قبلاً در جای دیگری منتشر نشده باشند.</li>
+          <li>مقالات پس از ارسال، توسط داوران متخصص بررسی و در صورت تایید، پذیرفته خواهند شد.</li>
+        </ul>
+      </div>
+      <div id="modal-section-contact" style="display:none;">
+        <p><strong>آدرس دفتر نشریه:</strong></p>
+        <p>استان کرمان، شهرستان جیرفت، بلوار امام خمینی، ابتدای خیابان انقلاب، حوزه علمیه امام صادق علیه السلام.</p>
+        <p><strong>آدرس وب‌سایت:</strong> <a href="https://SciTebyan.ir" target="_blank">SciTebyan.ir</a></p>
+        <p><strong>پست الکترونیکی:</strong> <a href="mailto:SciTebyan@gmail.com">SciTebyan@gmail.com</a></p>
+        <p><strong>تلفن تماس:</strong> (در صورت وجود، شماره تلفن را اینجا وارد کنید)</p>
+      </div>
+
+      <button class="close-modal-btn" onclick="toggleJournalInfo(false)">بستن</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© تمامی حقوق این وب‌سایت متعلق به <strong>سالنامه علمی تبیان</strong>، حوزه علمیه امام صادق علیه السلام جیرفت می‌باشد.</p>
+      <p>طراحی و توسعه اولیه با الهام از ساختار عمومی. آدرس سایت: <a href="https://SciTebyan.ir" target="_blank">SciTebyan.ir</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ID گوگل شیت خود را اینجا قرار دهید
+      const sheetId = 'YOUR_GOOGLE_SHEET_ID_HERE'; // <--- مهم: این را با ID شیت خودتان جایگزین کنید
+      const articlesContainer = document.getElementById('articles-container');
+      const searchInput = document.getElementById('search-bar');
+      let allArticles = [];
+
+      function renderArticles(list) {
+        articlesContainer.innerHTML = '';
+        if (list.length === 0) {
+          articlesContainer.innerHTML = '<p style="text-align:center;">مقاله‌ای با این مشخصات یافت نشد.</p>';
+          return;
+        }
+
+        list.forEach(article => {
+          const card = document.createElement('article');
+          card.className = 'article-card';
+
+          // ایجاد متا تگ های citation برای هر مقاله (برای گوگل اسکالر)
+          // این متا تگ ها باید در <head> باشند اما برای SPA این یک راه حل تقریبی است
+          // گوگل اسکالر ممکن است اینها را اگر در body باشند، نخواند.
+          // راه حل بهتر: صفحات جداگانه برای هر مقاله.
+          let citationMeta = '';
+          if (article.title) citationMeta += `<meta name="citation_title" content="${article.title}">\n`;
+          if (article.authors) citationMeta += `<meta name="citation_author" content="${article.authors.replace(/,/g, ';')}">\n`; // نویسندگان با ; جدا میشوند
+          if (article.publication_date) citationMeta += `<meta name="citation_publication_date" content="${article.publication_date.replace(/\//g, '/')}">\n`; // فرمت YYYY/MM/DD
+          if (article.pdf_link) citationMeta += `<meta name="citation_pdf_url" content="${article.pdf_link}">\n`;
+          // keywords برای اسکالر میتواند به citation_keywords تبدیل شود.
+
+          card.innerHTML = `
+            ${citationMeta} 
+            <h3 class="article-title">${article.title || 'بدون عنوان'}</h3>
+            <div class="article-meta">
+              ${article.authors ? `<span><strong>نویسندگان:</strong> ${article.authors}</span>` : ''}
+              ${article.publication_date ? `<span><strong>تاریخ انتشار:</strong> ${article.publication_date}</span>` : ''}
+            </div>
+            ${article.abstract ? `<div class="article-abstract">${article.abstract}</div>
+            ${article.abstract.length > 250 ? '<span class="read-more-abstract">مشاهده بیشتر چکیده</span><span class="show-less-abstract" style="display:none;">نمایش کمتر</span>' : ''}` : ''}
+            ${article.keywords ? `<div class="article-keywords"><strong>کلیدواژه‌ها:</strong> ${article.keywords.split(',').map(kw => `<span>${kw.trim()}</span>`).join('')}</div>` : ''}
+            ${article.pdf_link && article.pdf_link !== '#' ? `<a href="${article.pdf_link}" class="download-button" target="_blank" rel="noopener noreferrer">دانلود مقاله (PDF)</a>` : '<p>فایل PDF در دسترس نیست.</p>'}
+          `;
+          articlesContainer.appendChild(card);
+
+          // Event listener برای "مشاهده بیشتر/کمتر" چکیده
+          const readMoreBtn = card.querySelector('.read-more-abstract');
+          const showLessBtn = card.querySelector('.show-less-abstract');
+          const abstractDiv = card.querySelector('.article-abstract');
+
+          if (readMoreBtn && abstractDiv) {
+            readMoreBtn.addEventListener('click', () => {
+              abstractDiv.classList.add('expanded');
+              readMoreBtn.style.display = 'none';
+              if(showLessBtn) showLessBtn.style.display = 'inline-block';
+            });
+          }
+          if (showLessBtn && abstractDiv) {
+             showLessBtn.addEventListener('click', () => {
+              abstractDiv.classList.remove('expanded');
+              showLessBtn.style.display = 'none';
+              if(readMoreBtn) readMoreBtn.style.display = 'inline-block';
+            });
+          }
+
+        });
+      }
+
+      // Fetch data from Google Sheet
+      // اطمینان حاصل کنید که گوگل شیت شما "Publish to the web" شده باشد
+      fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`)
+        .then(response => response.text())
+        .then(text => {
+          // استخراج JSON از پاسخ گوگل شیت
+          const jsonData = JSON.parse(text.substring(text.indexOf('(') + 1, text.lastIndexOf(')')));
+          if (jsonData.table && jsonData.table.rows) {
+            allArticles = jsonData.table.rows.map(row => {
+              // ستون ها: title, authors, abstract, keywords, pdf_link, publication_date
+              // c[0] = title, c[1] = authors, c[2] = abstract, c[3] = keywords, c[4] = pdf_link, c[5] = publication_date
+              return {
+                title: row.c[0]?.v || '',
+                authors: row.c[1]?.v || '',
+                abstract: row.c[2]?.v || '',
+                keywords: row.c[3]?.v || '',
+                pdf_link: row.c[4]?.v || '#',
+                publication_date: row.c[5]?.v ? formatDate(row.c[5].v) : '' // فرمت تاریخ
+              };
+            });
+            renderArticles(allArticles);
+          } else {
+            articlesContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات از گوگل شیت. لطفا تنظیمات اشتراک گذاری شیت را بررسی کنید یا ID شیت صحیح باشد.</p>';
+            console.error("Error parsing Google Sheet data or sheet is empty/misconfigured:", jsonData);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching articles:', error);
+          articlesContainer.innerHTML = '<p style="text-align:center;">خطا در برقراری ارتباط برای دریافت مقالات. لطفا بعداً تلاش کنید.</p>';
+        });
+
+        function formatDate(dateString) {
+            // Google Sheets date format is "Date(YYYY,MM,DD)" where MM is 0-indexed
+            // Example: "Date(2023,5,10)" is June 10, 2023
+            if (typeof dateString === 'string' && dateString.startsWith('Date(')) {
+                try {
+                    const parts = dateString.substring(5, dateString.length - 1).split(',');
+                    const year = parseInt(parts[0]);
+                    const month = parseInt(parts[1]) + 1; // Month is 0-indexed
+                    const day = parseInt(parts[2]);
+                    return `${year}/${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}`;
+                } catch (e) {
+                    return dateString; // Return original if parsing fails
+                }
+            }
+            return dateString; // If not in "Date(...)" format, return as is
+        }
+
+      // Search functionality
+      searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const filteredArticles = allArticles.filter(article =>
+          (article.title && article.title.toLowerCase().includes(searchTerm)) ||
+          (article.authors && article.authors.toLowerCase().includes(searchTerm)) ||
+          (article.keywords && article.keywords.toLowerCase().includes(searchTerm)) ||
+          (article.abstract && article.abstract.toLowerCase().includes(searchTerm))
+        );
+        renderArticles(filteredArticles);
+      });
+    });
+
+    // Modal toggle function
+    const journalInfoModal = document.getElementById('journal-info-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalSectionAbout = document.getElementById('modal-section-about');
+    const modalSectionContact = document.getElementById('modal-section-contact');
+
+    function toggleJournalInfo(show, section = 'about') {
+      if (show) {
+        if (section === 'about') {
+          modalTitle.textContent = 'درباره سالنامه علمی تبیان';
+          modalSectionAbout.style.display = 'block';
+          modalSectionContact.style.display = 'none';
+        } else if (section === 'contact') {
+          modalTitle.textContent = 'اطلاعات تماس';
+          modalSectionAbout.style.display = 'none';
+          modalSectionContact.style.display = 'block';
+        }
+        journalInfoModal.style.display = 'flex';
+      } else {
+        journalInfoModal.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
