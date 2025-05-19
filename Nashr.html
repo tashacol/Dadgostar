@@ -68,11 +68,11 @@
 
   <style>
     @font-face {
-      font-family: 'BNazaninCustom'; /* یک نام دلخواه برای فونت شما */
+      font-family: 'BNazaninCustom';
       src: url('https://tashacol.github.io/ir/B-NAZANIN.TTF') format('truetype');
       font-weight: normal;
       font-style: normal;
-      font-display: swap; /* مهم برای بهبود تجربه بارگذاری فونت */
+      font-display: swap;
     }
 
     :root {
@@ -84,7 +84,7 @@
       --bg-color: #f8f9fa;
       --card-bg-color: #ffffff;
       --border-color: #dee2e6;
-      --font-family: 'BNazaninCustom', Tahoma, Arial, sans-serif; /* فونت B Nazanin به عنوان اولویت اول */
+      --font-family: 'BNazaninCustom', Tahoma, Arial, sans-serif;
     }
 
     * {
@@ -93,24 +93,23 @@
       padding: 0;
     }
 
-    /* Loading Screen Styles */
     #loading-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: var(--bg-color); /* استفاده از رنگ پس زمینه اصلی */
+      background-color: var(--bg-color);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
       flex-direction: column;
-      transition: opacity 0.5s ease-out, visibility 0.5s ease-out; /* برای محو شدن نرم */
+      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
     }
     .loader {
-      border: 8px solid #f3f3f3; /* Light grey */
-      border-top: 8px solid var(--secondary-color); /* Blue */
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid var(--secondary-color);
       border-radius: 50%;
       width: 60px;
       height: 60px;
@@ -120,7 +119,7 @@
         margin-top: 20px;
         font-size: 1.2rem;
         color: var(--text-color);
-        font-family: var(--font-family); /* فونت برای متن لودینگ */
+        font-family: var(--font-family);
     }
 
     @keyframes spin {
@@ -128,17 +127,15 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Hide main content initially using JS or this class */
     .hidden-until-ready {
         opacity: 0;
         visibility: hidden;
     }
-    .page-wrapper.visible { /* page-wrapper محتوای اصلی را در بر می گیرد */
+    .page-wrapper.visible {
         opacity: 1;
         visibility: visible;
         transition: opacity 0.5s ease-in;
     }
-
 
     body {
       font-family: var(--font-family);
@@ -320,18 +317,18 @@
     }
 
     .modal-overlay {
-      display: none; /* Initially hidden */
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7); /* کمی تیره‌تر برای مودال جلد */
       align-items: center;
       justify-content: center;
       z-index: 1000;
       padding: 20px;
-      opacity: 0; /* For fade-in effect */
+      opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
     .modal-overlay.visible {
@@ -348,8 +345,9 @@
       max-height: 90vh;
       overflow-y: auto;
       font-family: var(--font-family);
-      transform: scale(0.95); /* For pop-in effect */
+      transform: scale(0.95);
       transition: transform 0.3s ease-in-out;
+      position: relative; /* برای دکمه بستن مطلق */
     }
     .modal-overlay.visible .modal-content {
         transform: scale(1);
@@ -408,7 +406,57 @@
         margin: 0 auto;
     }
 
-    .close-modal-btn {
+    /* Styles for Cover Modal */
+    #cover-modal .modal-content {
+        max-width: 500px; /* یا اندازه دلخواه برای جلد */
+        padding: 20px;
+        text-align: center;
+    }
+    #cover-image-display {
+        max-width: 100%;
+        max-height: 60vh; /* محدودیت ارتفاع اولیه */
+        border: 2px solid var(--border-color);
+        border-radius: 4px;
+        cursor: zoom-in;
+        transition: transform 0.3s ease, max-height 0.3s ease;
+        object-fit: contain; /* برای حفظ نسبت تصویر */
+    }
+    #cover-image-display.zoomed {
+        max-height: 85vh; /* ارتفاع بیشتر در حالت زوم */
+        transform: scale(1.1); /* کمی بزرگتر */
+        cursor: zoom-out;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+    #cover-modal-text {
+        margin-top: 15px;
+        font-size: 0.95rem;
+        color: var(--text-color);
+    }
+    .modal-close-button {
+        position: absolute;
+        top: -10px; /* تنظیم برای قرارگیری مناسب */
+        left: -10px; /* تنظیم برای قرارگیری مناسب */
+        background: var(--primary-color);
+        color: white;
+        border: 2px solid white;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        line-height: 32px; /* تنظیم برای وسط چین عمودی متن */
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        font-weight: bold;
+    }
+    .modal-close-button:hover {
+        background-color: var(--secondary-color);
+        transform: scale(1.1);
+    }
+
+
+    .close-modal-btn { /* دکمه بستن عمومی در پایین مودال */
       display: block;
       margin: 20px auto 0;
       background: #dc3545;
@@ -450,6 +498,9 @@
           font-size: 0.8rem;
           padding: 5px 10px;
       }
+      #cover-modal .modal-content { max-width: 90vw; } /* برای صفحه های کوچکتر */
+      .modal-close-button { top: 5px; left: 5px; width:30px; height:30px; font-size:18px; line-height:28px;}
+
     }
     @media (max-width: 480px) {
         .article-title { font-size: 1.3rem; }
@@ -457,7 +508,7 @@
     }
   </style>
 </head>
-<body> <!-- کلاس hidden-until-ready دیگر مستقیما اینجا استفاده نمیشود، توسط JS کنترل میشود -->
+<body>
 
   <div id="loading-overlay">
     <div class="loader"></div>
@@ -503,6 +554,7 @@
 
   <div id="journal-info-modal" class="modal-overlay">
     <div class="modal-content">
+       <button class="modal-close-button" onclick="toggleJournalInfo(false)" title="بستن">×</button>
       <h2 id="modal-title-info">درباره سالنامه علمی تبیان</h2>
       <div id="modal-section-about">
         <p><strong>سالنامه علمی تبیان</strong> یک نشریه تخصصی در زمینه علوم حوزوی و اسلامی است که توسط <strong>حوزه علمیه امام صادق علیه السلام جیرفت</strong> منتشر می‌شود. این سالنامه با هدف ترویج و نشر پژوهش‌های علمی طلاب و فضلای حوزه، به ویژه طلاب سطوح حوزه علمیه امام صادق (ع) جیرفت که مقالاتشان پس از طی فرآیند داوری علمی پذیرفته شده باشد، فعالیت می‌کند.</p>
@@ -531,25 +583,42 @@
         <p><strong>پست الکترونیکی:</strong> <a href="mailto:SciTebyan@gmail.com">SciTebyan@gmail.com</a></p>
         <p><strong>تلفن تماس:</strong> (در صورت وجود، شماره تلفن را اینجا وارد کنید)</p>
       </div>
-      <button class="close-modal-btn" onclick="toggleJournalInfo(false)">بستن</button>
+      <!-- <button class="close-modal-btn" onclick="toggleJournalInfo(false)">بستن</button> -->
     </div>
   </div>
 
   <div id="journal-issues-modal" class="modal-overlay">
     <div class="modal-content">
+      <button class="modal-close-button" onclick="toggleIssuesModal(false)" title="بستن">×</button>
       <h2>دوره‌های منتشر شده سالنامه</h2>
       <div id="issues-table-container">
         <p style="text-align:center;">در حال بارگذاری اطلاعات دوره‌ها...</p>
       </div>
-      <button class="close-modal-btn" onclick="toggleIssuesModal(false)">بستن</button>
+      <!-- <button class="close-modal-btn" onclick="toggleIssuesModal(false)">بستن</button> -->
+    </div>
+  </div>
+
+  <!-- Modal for Latest Cover Image -->
+  <div id="cover-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close-button" onclick="toggleCoverModal(false)" title="بستن">×</button>
+      <img id="cover-image-display" src="" alt="جلد آخرین دوره سالنامه تبیان">
+      <p id="cover-modal-text">برای دانلود کامل این دوره و دوره‌های پیشین، از طریق منوی "مشاهده دوره‌ها" اقدام نمایید.</p>
     </div>
   </div>
 
 
   <script>
+    // --- Google Sheet IDs ---
     const articlesSheetId = '1Kf49GtmSZbX2Or8dgzqarq5MVxSnv17jRPNPxeLL_wk';
     const issuesSheetId = '15nuHXnC40udicxyaiiZcsagZVVrss8LXPhK3FOwfI_c';
 
+    // --- Configuration ---
+    // <<-- مهم: لینک مستقیم به تصویر جلد آخرین دوره را اینجا قرار دهید
+    const latestCoverImageUrl = 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg'; // مثال: 'https://example.com/covers/latest-issue.jpg'
+    const showCoverModalOnLoad = true; // برای نمایش مودال جلد هنگام ورود (فقط یکبار در هر session)
+
+    // --- DOM Elements ---
     const articlesContainer = document.getElementById('articles-container');
     const searchInput = document.getElementById('search-bar');
     const loadingOverlay = document.getElementById('loading-overlay');
@@ -563,44 +632,64 @@
     const journalIssuesModal = document.getElementById('journal-issues-modal');
     const issuesTableContainer = document.getElementById('issues-table-container');
 
+    const coverModal = document.getElementById('cover-modal');
+    const coverImageDisplay = document.getElementById('cover-image-display');
+
+    // --- State Variables ---
     let allArticles = [];
     let allIssues = [];
-    let articlesFetched = false; // فلگ برای پیگیری بارگذاری مقالات
+    let articlesFetched = false;
 
+    // --- Page Load and Font Handling ---
     function showPageContent() {
-        if (articlesFetched) { // فقط اگر مقالات بارگذاری شده باشند صفحه را نمایش بده
+        if (articlesFetched) {
             pageWrapper.classList.add('visible');
             pageWrapper.classList.remove('hidden-until-ready');
             loadingOverlay.style.opacity = '0';
-            setTimeout(() => { // برای اینکه انیمیشن محو شدن تمام شود
+            setTimeout(() => {
                 loadingOverlay.style.display = 'none';
+                // نمایش مودال جلد پس از بارگذاری صفحه و با تاخیر کوتاه
+                if (showCoverModalOnLoad && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg' && !sessionStorage.getItem('coverModalShown')) {
+                    setTimeout(() => {
+                        toggleCoverModal(true);
+                        sessionStorage.setItem('coverModalShown', 'true');
+                    }, 500); // نیم ثانیه تاخیر
+                }
             }, 500);
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        articlesContainer.innerHTML = '<p style="text-align:center;">در حال بارگذاری مقالات...</p>'; // پیام اولیه
+        articlesContainer.innerHTML = '<p style="text-align:center;">در حال بارگذاری مقالات...</p>';
 
         const fontLoadPromise = document.fonts && typeof document.fonts.ready === 'object' ?
             document.fonts.ready :
-            Promise.resolve(); // اگر API فونت در دسترس نیست، بلافاصله resolve کن
+            Promise.resolve();
 
         fontLoadPromise.then(() => {
-            console.log('Fonts considered ready (either loaded or API not supported).');
+            console.log('Fonts considered ready.');
             fetchArticles();
         }).catch(err => {
             console.warn('Font loading check error:', err);
-            fetchArticles(); // در صورت خطا هم مقالات را بارگذاری کن
+            fetchArticles();
         });
+
+        // Event listener برای بزرگنمایی تصویر جلد
+        if (coverImageDisplay) {
+            coverImageDisplay.addEventListener('click', () => {
+                coverImageDisplay.classList.toggle('zoomed');
+            });
+        }
     });
 
+    // --- Article Fetching and Rendering ---
     function renderArticles(list) {
       articlesContainer.innerHTML = '';
       if (list.length === 0 && allArticles.length > 0) {
         articlesContainer.innerHTML = '<p style="text-align:center;">مقاله‌ای با این مشخصات یافت نشد.</p>';
         return;
       }
-      if (list.length === 0 && allArticles.length === 0 && articlesFetched) { // بررسی پس از اتمام fetch
+      if (list.length === 0 && allArticles.length === 0 && articlesFetched) {
          articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد.</p>';
          return;
       }
@@ -608,6 +697,8 @@
       list.forEach(article => {
         const card = document.createElement('article');
         card.className = 'article-card';
+        // متا تگ های Citation اینجا اضافه نمی شوند چون در body تاثیری برای گوگل اسکالر ندارند.
+        // برای سئوی بهتر مقالات، باید هر مقاله صفحه جداگانه با این متاها در <head> داشته باشد.
         card.innerHTML = `
           <h3 class="article-title">${article.title || 'بدون عنوان'}</h3>
           <div class="article-meta">
@@ -646,7 +737,7 @@
         .then(response => response.text())
         .then(text => {
           const jsonData = JSON.parse(text.substring(text.indexOf('(') + 1, text.lastIndexOf(')')));
-          if (jsonData.table && jsonData.table.rows) { // حتی اگر rows خالی باشد
+          if (jsonData.table && jsonData.table.rows) {
             allArticles = jsonData.table.rows.map(row => ({
               title: row.c[0]?.v || '',
               authors: row.c[1]?.v || '',
@@ -656,7 +747,7 @@
               publication_date: row.c[5]?.v ? formatDate(row.c[5].v) : ''
             }));
             renderArticles(allArticles);
-            if (allArticles.length === 0) { // اگر پس از fetch، هیچ مقاله ای نبود
+            if (allArticles.length === 0) {
                 articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد.</p>';
             }
           } else {
@@ -669,7 +760,7 @@
           articlesContainer.innerHTML = '<p style="text-align:center;">خطا در برقراری ارتباط برای دریافت مقالات. لطفا اتصال اینترنت خود را بررسی کرده و دوباره تلاش کنید.</p>';
         })
         .finally(() => {
-            articlesFetched = true; // نشان می دهد که تلاش برای بارگذاری انجام شده
+            articlesFetched = true;
             showPageContent();
         });
     }
@@ -698,11 +789,16 @@
       renderArticles(filteredArticles);
     });
 
+    // --- Modal Toggling Functions ---
     function toggleModal(modalElement, show) {
         if (show) {
             modalElement.classList.add('visible');
         } else {
             modalElement.classList.remove('visible');
+            // اگر تصویر جلد زوم شده بود، از حالت زوم خارج کن
+            if (modalElement === coverModal && coverImageDisplay.classList.contains('zoomed')) {
+                coverImageDisplay.classList.remove('zoomed');
+            }
         }
     }
 
@@ -721,6 +817,7 @@
       toggleModal(journalInfoModal, show);
     }
 
+    // --- Journal Issues Modal ---
     function renderIssues(list) {
         issuesTableContainer.innerHTML = '';
         if (list.length === 0) {
@@ -785,13 +882,26 @@
     }
 
     function toggleIssuesModal(show) {
-      if (show && allIssues.length === 0 && issuesSheetId !== '15nuHXnC40udicxyaiiZcsagZVVrss8LXPhK3FOwfI_c_PLACEHOLDER') { // جلوگیری از fetch اگر شناسه پیشفرض است
+      if (show && allIssues.length === 0 && issuesSheetId !== 'PLACEHOLDER_ID_FOR_ISSUES_SHEET') { // جلوگیری از fetch اگر شناسه پیشفرض است
          fetchIssues();
       } else if (show) {
          renderIssues(allIssues);
       }
       toggleModal(journalIssuesModal, show);
     }
+
+    // --- Cover Modal Functionality ---
+    function toggleCoverModal(show) {
+        if (show) {
+            if (coverImageDisplay && latestCoverImageUrl !== 'YOUR_LATEST_COVER_IMAGE_URL_HERE.jpg') {
+                coverImageDisplay.src = latestCoverImageUrl;
+            } else if (coverImageDisplay) {
+                 coverImageDisplay.alt = "تصویر جلد در دسترس نیست"; // اگر URL معتبر نباشد
+            }
+        }
+        toggleModal(coverModal, show);
+    }
+
   </script>
 
 </body>
