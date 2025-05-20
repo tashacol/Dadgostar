@@ -14,7 +14,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://SciTebyan.ir/">
 
-  <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_TOKEN">
+  <meta name="google-site-verification" content="MY_GOOGLE_SITE_VERIFICATION_TOKEN">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://SciTebyan.ir/">
@@ -507,7 +507,7 @@
     <nav class="main-nav">
       <div class="container">
         <ul>
-          <li><a href="#" class="active" onclick="event.preventDefault();">صفحه اصلی مقالات</a></li>
+          <li><a href="#" class="active" onclick="event.preventDefault();">صفحه مقالات</a></li>
           <li><a href="#" onclick="event.preventDefault(); toggleJournalInfo(true);">درباره نشریه</a></li>
           <li><a href="#" onclick="event.preventDefault(); toggleIssuesModal(true);">مشاهده دوره‌ها</a></li>
           <li><a href="#" onclick="event.preventDefault(); toggleJournalInfo(true, 'contact');">اطلاعات تماس</a></li>
@@ -547,11 +547,11 @@
             <div class="info-item"><strong>رتبه علمی:</strong> علمی - اطلاع رسانی</div>
             <div class="info-item"><strong>زمینه تخصصی:</strong> علوم حوزوی و اسلامی</div>
             <div class="info-item"><strong>دوره نشر:</strong> سالانه (انتشار در ۱۰ خرداد هر سال)</div>
-            <div class="info-item"><strong>نمایه‌سازی:</strong> تلاش برای نمایه شدن در گوگل اسکالر و پایگاه‌های علمی معتبر</div>
+            <div class="info-item"><strong>نمایه‌سازی:</strong> تلاش برای نمایه شدن در سیویلیکا</div>
         </div>
         <p><strong>شرایط پذیرش مقاله:</strong></p>
         <ul>
-          <li>مقالات باید در زمینه علوم حوزوی و اسلامی باشند.</li>
+          <li>مقالات باید در زمینه علوم حوزوی، اسلامی باشند</li>
           <li>نویسندگان باید از طلاب سطوح حوزه علمیه امام صادق (ع) جیرفت باشند.</li>
           <li>مقالات باید اصیل بوده و قبلاً در جای دیگری منتشر نشده باشند.</li>
           <li>مقالات پس از ارسال، توسط داوران متخصص بررسی و در صورت تایید، پذیرفته خواهند شد.</li>
@@ -562,7 +562,7 @@
         <p>استان کرمان، شهرستان جیرفت، بلوار امام خمینی، ابتدای خیابان انقلاب، حوزه علمیه امام صادق علیه السلام.</p>
         <p><strong>آدرس وب‌سایت:</strong> <a href="https://SciTebyan.ir" target="_blank">SciTebyan.ir</a></p>
         <p><strong>پست الکترونیکی:</strong> <a href="mailto:SciTebyan@gmail.com">SciTebyan@gmail.com</a></p>
-        <p><strong>تلفن تماس:</strong> (در صورت وجود، شماره تلفن را اینجا وارد کنید)</p>
+        <p><strong>تلفن تماس:</strong>۰۳۴۴۳۳۱۶۰۲۵</p>
       </div>
     </div>
   </div>
@@ -700,9 +700,9 @@
             ${article.publication_date ? `<span><strong>تاریخ انتشار:</strong> ${article.publication_date}</span>` : ''}
           </div>
           ${article.abstract ? `<div class="article-abstract">${article.abstract}</div>
-          ${article.abstract.length > 200 ? '<span class="read-more-abstract">مشاهده بیشتر چکیده</span><span class="show-less-abstract" style="display:none;">نمایش کمتر</span>' : ''}` : ''}
+          ${article.abstract.length > 200 ? '<span class="read-more-abstract">بیشتر</span><span class="show-less-abstract" style="display:none;">نمایش کمتر</span>' : ''}` : ''}
           ${article.keywords ? `<div class="article-keywords"><strong>کلیدواژه‌ها:</strong> ${article.keywords.split(',').map(kw => `<span>${kw.trim()}</span>`).join('')}</div>` : ''}
-          ${article.pdf_link && article.pdf_link !== '#' ? `<a href="${article.pdf_link}" class="download-button" target="_blank" rel="noopener noreferrer">دانلود مقاله</a>` : '<p>فایل PDF در دسترس نیست.</p>'}
+          ${article.pdf_link && article.pdf_link !== '#' ? `<a href="${article.pdf_link}" class="download-button" target="_blank" rel="noopener noreferrer">دانلود مقاله</a>` : '<p>فایل مقاله در دسترس نیست</p>'}
         `;
         articlesContainer.appendChild(card);
         const readMoreBtn = card.querySelector('.read-more-abstract');
@@ -731,7 +731,7 @@
             renderArticles(allArticles);
             if (allArticles.length === 0) { articlesContainer.innerHTML = '<p style="text-align:center;">هنوز مقاله‌ای برای نمایش وجود ندارد.</p>'; }
           } else {
-            articlesContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات مقالات. لطفا تنظیمات اشتراک گذاری شیت را بررسی کنید.</p>';
+            articlesContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات مقالات. لطفا تنظیمات پایگاه داده را برسی کنید</p>';
             console.error("Error parsing Google Sheet data for articles:", jsonData);
           }
         })
@@ -817,7 +817,7 @@
                     renderIssues(allIssues);
                     if (allIssues.length === 0) { issuesTableContainer.innerHTML = '<p style="text-align:center;">هنوز اطلاعات دوره‌ای برای نمایش وجود ندارد.</p>';}
                 } else {
-                    issuesTableContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات دوره‌ها. لطفا تنظیمات اشتراک گذاری شیت را بررسی کنید.</p>';
+                    issuesTableContainer.innerHTML = '<p style="text-align:center;">خطا در بارگذاری اطلاعات دوره‌ها. لطفا تنظیمات پایگاه داده را بررسی کنید.</p>';
                     console.error("Error parsing Google Sheet data for issues:", jsonData);
                 }
             })
